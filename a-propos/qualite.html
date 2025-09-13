@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Démarche Qualité - Clinique Alirfane Tanger">
+    <title>Qualité & Sécurité - Clinique Alirfane Tanger</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .qualite-hero {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            padding: 100px 0 60px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.1) 35px, rgba(255,255,255,.1) 70px),
+                repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255,255,255,.05) 35px, rgba(255,255,255,.05) 70px);
+        }
+        
+        .quality-intro {
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin: -40px auto 80px;
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+        }
+        
+        .intro-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .intro-title {
+            font-size: 32px;
+            color: #111827;
+            margin-bottom: 15px;
+        }
+        
+        .intro-subtitle {
+            color: #6b7280;
+            font-size: 18px;
+        }
+        
+        .quality-pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .pillar {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .pillar-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            color: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 20px;
+        }
+        
+        .pillar-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+        
+        .pillar-text {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .certifications-section {
+            padding: 80px 0;
+            background: #f9fafb;
+        }
+        
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .cert-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .cert-header {
+            padding: 30px;
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            text-align: center;
+        }
+        
+        .cert-logo {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .cert-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+        }
+        
+        .cert-body {
+            padding: 30px;
+        }
+        
+        .cert-description {
+            color: #6b7280;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .cert-date {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #06b6d4;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .indicators-section {
+            padding: 80px 0;
+        }
+        
+        .indicators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .indicator-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid;
+            transition: transform 0.3s ease;
+        }
+        
+        .indicator-card:nth-child(1) { border-color: #10b981; }
+        .indicator-card:nth-child(2) { border-color: #06b6d4; }
+        .indicator-card:nth-child(3) { border-color: #8b5cf6; }
+        .indicator-card:nth-child(4) { border-color: #f59e0b; }
+        .indicator-card:nth-child(5) { border-color: #ef4444; }
+        .indicator-card:nth-child(6) { border-color: #3b82f6; }
+        
+        .indicator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+        
+        .indicator-value {
+            font-size: 42px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .indicator-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+        
+        .indicator-desc {
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+        
+        .process-section {
+            background: linear-gradient(135deg, #f0fdfa, #f0f9ff);
+            padding: 80px 0;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .process-step {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 15px;
+        }
+        
+        .step-description {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        .safety-section {
+            padding: 80px 0;
+        }
+        
+        .safety-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .safety-card {
+            display: flex;
+            gap: 25px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .safety-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+        
+        .safety-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+        
+        .safety-content {
+            flex: 1;
+        }
+        
+        .safety-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+        
+        .safety-text {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        .committee-section {
+            background: #f9fafb;
+            padding: 80px 0;
+        }
+        
+        .committee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .committee-card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .committee-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+            color: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .committee-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 15px;
+        }
+        
+        .committee-mission {
+            color: #6b7280;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .committee-members {
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .member-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            color: #6b7280;
+            font-size: 14px;
+        }
+        
+        .improvement-section {
+            padding: 80px 0;
+        }
+        
+        .improvement-timeline {
+            max-width: 800px;
+            margin: 50px auto 0;
+            position: relative;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #06b6d4, #0891b2);
+        }
+        
+        .improvement-item {
+            position: relative;
+            padding-left: 70px;
+            margin-bottom: 40px;
+        }
+        
+        .improvement-dot {
+            position: absolute;
+            left: 20px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid #06b6d4;
+            border-radius: 50%;
+        }
+        
+        .improvement-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .improvement-year {
+            font-size: 14px;
+            font-weight: 600;
+            color: #06b6d4;
+            margin-bottom: 10px;
+        }
+        
+        .improvement-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+        
+        .improvement-desc {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .quality-pillars {
+                grid-template-columns: 1fr;
+            }
+            
+            .safety-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .indicators-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+    
+    <!-- Contenu Principal -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="qualite-hero">
+            <div class="hero-pattern"></div>
+            <div class="container" style="position: relative;">
+                <h1 style="font-size: 3rem; margin-bottom: 20px;">Qualité & Sécurité des Soins</h1>
+                <p style="font-size: 1.25rem; opacity: 0.95; max-width: 700px; margin: 0 auto;">
+                    Notre engagement pour l'excellence et la sécurité de chaque patient
+                </p>
+            </div>
+        </section>
+        
+        <!-- Introduction Qualité -->
+        <section class="container">
+            <div class="quality-intro">
+                <div class="intro-header">
+                    <h2 class="intro-title">Notre Politique Qualité</h2>
+                    <p class="intro-subtitle">
+                        Une démarche d'amélioration continue au service de votre santé
+                    </p>
+                </div>
+                
+                <p style="text-align: center; color: #6b7280; line-height: 1.8; max-width: 800px; margin: 0 auto;">
+                    La Clinique Alirfane place la qualité et la sécurité des soins au cœur de ses priorités. 
+                    Notre système de management de la qualité, certifié selon les normes internationales les plus 
+                    exigeantes, garantit une prise en charge optimale et sécurisée de chaque patient.
+                </p>
+                
+                <div class="quality-pillars">
+                    <div class="pillar">
+                        <div class="pillar-icon">🎯</div>
+                        <h3 class="pillar-title">Objectifs Clairs</h3>
+                        <p class="pillar-text">
+                            Des indicateurs précis pour mesurer et améliorer continuellement nos performances
+                        </p>
+                    </div>
+                    
+                    <div class="pillar">
+                        <div class="pillar-icon">📊</div>
+                        <h3 class="pillar-title">Suivi Rigoureux</h3>
+                        <p class="pillar-text">
+                            Monitoring constant de nos processus et résultats cliniques
+                        </p>
+                    </div>
+                    
+                    <div class="pillar">
+                        <div class="pillar-icon">🔄</div>
+                        <h3 class="pillar-title">Amélioration Continue</h3>
+                        <p class="pillar-text">
+                            Cycle PDCA appliqué à tous nos services pour une évolution permanente
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Certifications -->
+        <section class="certifications-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #111827; margin-bottom: 20px;">Nos Certifications</h2>
+                <p style="text-align: center; color: #6b7280; max-width: 700px; margin: 0 auto;">
+                    Reconnus par les plus hautes instances nationales et internationales
+                </p>
+                
+                <div class="cert-grid">
+                    <div class="cert-card">
+                        <div class="cert-header">
+                            <div class="cert-logo">🏅</div>
+                            <h3 class="cert-name">ISO 9001:2015</h3>
+                        </div>
+                        <div class="cert-body">
+                            <p class="cert-description">
+                                Certification internationale pour notre système de management de la qualité, 
+                                garantissant l'excellence de nos processus et la satisfaction de nos patients.
+                            </p>
+                            <div class="cert-date">
+                                📅 Certifié depuis 2005 | Renouvelé en 2023
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cert-card">
+                        <div class="cert-header">
+                            <div class="cert-logo">🌟</div>
+                            <h3 class="cert-name">JCI Accreditation</h3>
+                        </div>
+                        <div class="cert-body">
+                            <p class="cert-description">
+                                Accréditation Joint Commission International, référence mondiale en matière 
+                                de qualité et sécurité des soins hospitaliers.
+                            </p>
+                            <div class="cert-date">
+                                📅 Accrédité depuis 2012 | Renouvellement 2024
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cert-card">
+                        <div class="cert-header">
+                            <div class="cert-logo">🌱</div>
+                            <h3 class="cert-name">Green Hospital</h3>
+                        </div>
+                        <div class="cert-body">
+                            <p class="cert-description">
+                                Certification environnementale reconnaissant nos efforts en matière de 
+                                développement durable et de gestion éco-responsable.
+                            </p>
+                            <div class="cert-date">
+                                📅 Certifié depuis 2022
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Indicateurs Qualité -->
+        <section class="indicators-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #111827; margin-bottom: 20px;">Nos Indicateurs Qualité</h2>
+                <p style="text-align: center; color: #6b7280; max-width: 700px; margin: 0 auto;">
+                    Des résultats mesurables qui témoignent de notre excellence
+                </p>
+                
+                <div class="indicators-grid">
+                    <div class="indicator-card">
+                        <div class="indicator-value">98%</div>
+                        <div class="indicator-label">Satisfaction Patient</div>
+                        <div class="indicator-desc">
+                            Taux de satisfaction globale de nos patients
+                        </div>
+                    </div>
+                    
+                    <div class="indicator-card">
+                        <div class="indicator-value">0.2%</div>
+                        <div class="indicator-label">Taux d'Infection</div>
+                        <div class="indicator-desc">
+                            Infections nosocomiales (moyenne nationale: 5%)
+                        </div>
+                    </div>
+                    
+                    <div class="indicator-card">
+                        <div class="indicator-value">99.8%</div>
+                        <div class="indicator-label">Conformité Hygiène</div>
+                        <div class="indicator-desc">
+                            Respect des protocoles d'hygiène hospitalière
+                        </div>
+                    </div>
+                    
+                    <div class="indicator-card">
+                        <div class="indicator-value">15min</div>
+                        <div class="indicator-label">Délai Urgences</div>
+                        <div class="indicator-desc">
+                            Temps moyen de prise en charge aux urgences
+                        </div>
+                    </div>
+                    
+                    <div class="indicator-card">
+                        <div class="indicator-value">0</div>
+                        <div class="indicator-label">Événements Graves</div>
+                        <div class="indicator-desc">
+                            Événements indésirables graves évitables en 2024
+                        </div>
+                    </div>
+                    
+                    <div class="indicator-card">
+                        <div class="indicator-value">100%</div>
+                        <div class="indicator-label">Traçabilité</div>
+                        <div class="indicator-desc">
+                            Dossiers patients complets et conformes
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Processus Qualité -->
+        <section class="process-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #111827; margin-bottom: 20px;">Notre Processus Qualité</h2>
+                <p style="text-align: center; color: #6b7280; max-width: 700px; margin: 0 auto;">
+                    Une approche structurée pour garantir l'excellence
+                </p>
+                
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Planification</h3>
+                        <p class="step-description">
+                            Définition des objectifs qualité et des plans d'action basés sur l'analyse 
+                            des risques et les retours patients
+                        </p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Mise en Œuvre</h3>
+                        <p class="step-description">
+                            Déploiement des protocoles et procédures avec formation continue du personnel
+                        </p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Contrôle</h3>
+                        <p class="step-description">
+                            Audits réguliers, monitoring des indicateurs et évaluation de la conformité
+                        </p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Amélioration</h3>
+                        <p class="step-description">
+                            Actions correctives et préventives pour une amélioration continue
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sécurité des Soins -->
+        <section class="safety-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #111827; margin-bottom: 20px;">Sécurité des Soins</h2>
+                <p style="text-align: center; color: #6b7280; max-width: 700px; margin: 0 auto;">
+                    Des mesures rigoureuses pour votre protection
+                </p>
+                
+                <div class="safety-features">
+                    <div class="safety-card">
+                        <div class="safety-icon">🛡️</div>
+                        <div class="safety-content">
+                            <h3 class="safety-title">Prévention des Infections</h3>
+                            <p class="safety-text">
+                                Protocoles stricts d'hygiène, chambres à pression négative, 
+                                stérilisation centrale certifiée et formation continue du personnel
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="safety-card">
+                        <div class="safety-icon">💊</div>
+                        <div class="safety-content">
+                            <h3 class="safety-title">Sécurité Médicamenteuse</h3>
+                            <p class="safety-text">
+                                Circuit du médicament sécurisé, double contrôle systématique, 
+                                système informatisé de prescription et pharmacie clinique
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="safety-card">
+                        <div class="safety-icon">🔍</div>
+                        <div class="safety-content">
+                            <h3 class="safety-title">Identitovigilance</h3>
+                            <p class="safety-text">
+                                Bracelet d'identification pour chaque patient, vérification 
+                                systématique de l'identité avant chaque acte
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="safety-card">
+                        <div class="safety-icon">⚠️</div>
+                        <div class="safety-content">
+                            <h3 class="safety-title">Gestion des Risques</h3>
+                            <p class="safety-text">
+                                Cartographie des risques, signalement des événements indésirables, 
+                                analyse des causes racines et plans d'action préventifs
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Comités Qualité -->
+        <section class="committee-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #111827; margin-bottom: 20px;">Nos Comités Qualité</h2>
+                <p style="text-align: center; color: #6b7280; max-width: 700px; margin: 0 auto;">
+                    Des instances dédiées à l'amélioration continue
+                </p>
+                
+                <div class="committee-grid">
+                    <div class="committee-card">
+                        <div class="committee-icon">👥</div>
+                        <h3 class="committee-name">Comité de Pilotage Qualité</h3>
+                        <p class="committee-mission">
+                            Définit la politique qualité, valide les objectifs et suit les indicateurs 
+                            de performance de l'établissement.
+                        </p>
+                        <div class="committee-members">
+                            <div class="member-item">
+                                • Direction Générale
+                            </div>
+                            <div class="member-item">
+                                • Direction Médicale
+                            </div>
+                            <div class="member-item">
+                                • Responsable Qualité
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="committee-card">
+                        <div class="committee-icon">🦠</div>
+                        <h3 class="committee-name">CLIN</h3>
+                        <p class="committee-mission">
+                            Comité de Lutte contre les Infections Nosocomiales : prévention 
+                            et surveillance des infections associées aux soins.
+                        </p>
+                        <div class="committee-members">
+                            <div class="member-item">
+                                • Infectiologue référent
+                            </div>
+                            <div class="member-item">
+                                • Hygiéniste hospitalier
+                            </div>
+                            <div class="member-item">
+                                • Pharmacien
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="committee-card">
+                        <div class="committee-icon">📋</div>
+                        <h3 class="committee-name">CREX</h3>
+                        <p class="committee-mission">
+                            Comité de Retour d'Expérience : analyse des événements indésirables 
+                            et mise en place d'actions correctives.
+                        </p>
+                        <div class="committee-members">
+                            <div class="member-item">
+                                • Gestionnaire de risques
+                            </div>
+                            <div class="member-item">
+                                • Représentants médicaux
+                            </div>
+                            <div class="member-item">
+                                • Représentants soignants
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Amélioration Continue -->
+        <section class="improvement-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #111827; margin-bottom: 20px;">Notre Parcours d'Amélioration</h2>
+                <p style="text-align: center; color: #6b7280; max-width: 700px; margin: 0 auto;">
+                    Les grandes étapes de notre démarche qualité
+                </p>
+                
+                <div class="improvement-timeline">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="improvement-item">
+                        <div class="improvement-dot"></div>
+                        <div class="improvement-card">
+                            <div class="improvement-year">2024</div>
+                            <h3 class="improvement-title">Intelligence Artificielle</h3>
+                            <p class="improvement-desc">
+                                Intégration de l'IA pour l'aide au diagnostic et la prévention des risques
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="improvement-item">
+                        <div class="improvement-dot"></div>
+                        <div class="improvement-card">
+                            <div class="improvement-year">2023</div>
+                            <h3 class="improvement-title">Zéro Papier</h3>
+                            <p class="improvement-desc">
+                                Digitalisation complète des dossiers patients et des processus
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="improvement-item">
+                        <div class="improvement-dot"></div>
+                        <div class="improvement-card">
+                            <div class="improvement-year">2022</div>
+                            <h3 class="improvement-title">Certification Green</h3>
+                            <p class="improvement-desc">
+                                Obtention de la certification environnementale Green Hospital
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="improvement-item">
+                        <div class="improvement-dot"></div>
+                        <div class="improvement-card">
+                            <div class="improvement-year">2020</div>
+                            <h3 class="improvement-title">Protocoles COVID</h3>
+                            <p class="improvement-desc">
+                                Mise en place de protocoles sanitaires exceptionnels
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA -->
+        <section style="background: linear-gradient(135deg, #06b6d4, #0891b2); padding: 80px 0;">
+            <div class="container" style="text-align: center;">
+                <h2 style="color: white; font-size: 36px; margin-bottom: 20px;">
+                    Votre Sécurité, Notre Priorité
+                </h2>
+                <p style="color: white; font-size: 18px; opacity: 0.95; max-width: 600px; margin: 0 auto 30px;">
+                    Découvrez comment nous garantissons la qualité de vos soins
+                </p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="../contact/formulaire.html" class="btn-white" style="background: white; color: #06b6d4; padding: 15px 40px; text-decoration: none; border-radius: 30px; font-weight: 600;">
+                        Poser une Question
+                    </a>
+                    <a href="../services/index.html" class="btn-outline" style="background: transparent; color: white; padding: 15px 40px; border: 2px solid white; text-decoration: none; border-radius: 30px; font-weight: 600;">
+                        Nos Services
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <div id="footer-container"></div>
+    
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
+    <script>
+        // Charger le header et le footer
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                if (typeof initHeader === 'function') {
+                    setTimeout(initHeader, 100);
+                }
+            });
+            
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+                if (typeof initFooter === 'function') {
+                    setTimeout(initFooter, 100);
+                }
+            });
+        
+        // Animation des indicateurs
+        function animateIndicators() {
+            const indicators = document.querySelectorAll('.indicator-value');
+            
+            indicators.forEach(indicator => {
+                if (!indicator.classList.contains('animated')) {
+                    indicator.classList.add('animated');
+                    const text = indicator.textContent;
+                    
+                    if (text.includes('%')) {
+                        const value = parseFloat(text);
+                        let current = 0;
+                        const increment = value / 50;
+                        
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= value) {
+                                current = value;
+                                clearInterval(timer);
+                                indicator.textContent = value + '%';
+                            } else {
+                                indicator.textContent = current.toFixed(1) + '%';
+                            }
+                        }, 30);
+                    }
+                }
+            });
+        }
+        
+        // Observer pour les animations
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('indicators-grid')) {
+                        animateIndicators();
+                    }
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observer les éléments
+        document.querySelectorAll('.cert-card, .indicator-card, .process-step, .safety-card, .committee-card, .improvement-item, .indicators-grid').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

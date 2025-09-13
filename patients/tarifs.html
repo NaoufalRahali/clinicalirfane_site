@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tarifs et Assurances - Clinique Alirfane Tanger">
+    <title>Tarifs et Assurances - Clinique Alirfane Tanger</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .tarifs-hero {
+            background: linear-gradient(135deg, #00b894, #00cec9);
+            padding: 100px 0 60px;
+            color: white;
+            text-align: center;
+        }
+        
+        .pricing-section {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+        
+        .pricing-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .table-header {
+            background: linear-gradient(135deg, #00b894, #00cec9);
+            color: white;
+            padding: 20px 30px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .pricing-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            padding: 20px 30px;
+            border-bottom: 1px solid #e0e0e0;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        
+        .pricing-row:hover {
+            background: #f8f9fa;
+        }
+        
+        .pricing-row:last-child {
+            border-bottom: none;
+        }
+        
+        .service-name {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .service-price {
+            text-align: right;
+            font-size: 18px;
+            font-weight: 600;
+            color: #00b894;
+        }
+        
+        .insurance-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .insurance-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .insurance-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .insurance-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #dfe6e9, #b2bec3);
+            border-radius: 10px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+        
+        .insurance-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .insurance-type {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .payment-methods {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+        
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .payment-item {
+            text-align: center;
+        }
+        
+        .payment-icon {
+            width: 60px;
+            height: 60px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 10px;
+        }
+        
+        .convention-section {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+        
+        .convention-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .convention-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        .convention-icon {
+            width: 40px;
+            height: 40px;
+            background: #00b894;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .info-banner {
+            background: #fff5e5;
+            border-left: 5px solid #f39c12;
+            padding: 20px 30px;
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+        
+        .info-banner h4 {
+            color: #f39c12;
+            margin-bottom: 10px;
+        }
+        
+        .cost-estimator {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+        
+        .estimator-form {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .form-group {
+            display: grid;
+            gap: 8px;
+        }
+        
+        .form-group label {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group select,
+        .form-group input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .estimate-button {
+            background: linear-gradient(135deg, #00b894, #00cec9);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .estimate-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .faq-pricing {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #333;
+            transition: background 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: #f8f9fa;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 300px;
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .service-price {
+                text-align: left;
+            }
+            
+            .convention-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+    
+    <!-- Contenu Principal -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="tarifs-hero">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 20px;">Tarifs et Assurances</h1>
+                <p style="font-size: 1.25rem; opacity: 0.95;">Transparence et clarté dans nos tarifications</p>
+            </div>
+        </section>
+        
+        <!-- Grille Tarifaire -->
+        <section class="pricing-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 50px;">Grille Tarifaire Indicative</h2>
+                
+                <!-- Consultations -->
+                <div class="pricing-table">
+                    <div class="table-header">
+                        <span>👨‍⚕️ Consultations Médicales</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="service-name">Consultation Médecine Générale</span>
+                        <span class="service-price">200 DH</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="service-name">Consultation Spécialiste</span>
+                        <span class="service-price">300 - 500 DH</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="service-name">Consultation Urgence</span>
+                        <span class="service-price">350 DH</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="service-name">Consultation Garde (nuit/weekend)</span>
+                        <span class="service-price">400 DH</span>
+                    </div>
+                </div>
+                
+                <!-- Examens -->
+                <div class="pricing-table">
+                    <div class="table-header">
+                        <span>🔬 Examens et Analyses</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="service-name">Bilan Sanguin Complet</span>
+                        <span class="service-price">450 - 800 DH</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="service-name">Radiographie Standard</span>
+                        <span class="service-price">150 - 300 DH</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="service-name">Échographie</span>
+                        <span class="service-price">300 - 600 DH</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="service-name">Scanner</span>
+                        <span class="service-price">1200 - 2500 DH</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="service-name">IRM</span>
+                        <span class="service-price">2500 - 4000 DH</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="service-name">ECG</span>
+                        <span class="service-price">150 DH</span>
+                    </div>
+                </div>
+                
+                <!-- Hospitalisation -->
+                <div class="pricing-table">
+                    <div class="table-header">
+                        <span>🏥 Hospitalisation</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="service-name">Chambre Standard (par jour)</span>
+                        <span class="service-price">800 DH</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="service-name">Chambre Individuelle (par jour)</span>
+                        <span class="service-price">1200 DH</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="service-name">Suite VIP (par jour)</span>
+                        <span class="service-price">2500 DH</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="service-name">Soins Intensifs (par jour)</span>
+                        <span class="service-price">3000 - 5000 DH</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="service-name">Bloc Opératoire (par heure)</span>
+                        <span class="service-price">2000 - 4000 DH</span>
+                    </div>
+                </div>
+                
+                <!-- Information importante -->
+                <div class="info-banner">
+                    <h4>ℹ️ Information Importante</h4>
+                    <p style="color: #666; margin: 0;">
+                        Les tarifs indiqués sont donnés à titre indicatif et peuvent varier selon la complexité du cas, 
+                        la durée de l'intervention et les examens complémentaires nécessaires. Un devis détaillé vous sera 
+                        remis avant toute intervention programmée.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Assurances Partenaires -->
+        <section class="container" style="padding: 60px 20px;">
+            <h2 style="text-align: center; color: #333; margin-bottom: 50px;">Nos Partenaires Assurances</h2>
+            
+            <div class="insurance-cards">
+                <div class="insurance-card">
+                    <div class="insurance-logo">🏢</div>
+                    <div class="insurance-name">CNSS</div>
+                    <div class="insurance-type">Sécurité Sociale</div>
+                </div>
+                
+                <div class="insurance-card">
+                    <div class="insurance-logo">🏛️</div>
+                    <div class="insurance-name">CNOPS</div>
+                    <div class="insurance-type">Secteur Public</div>
+                </div>
+                
+                <div class="insurance-card">
+                    <div class="insurance-logo">🔵</div>
+                    <div class="insurance-name">Saham</div>
+                    <div class="insurance-type">Assurance Privée</div>
+                </div>
+                
+                <div class="insurance-card">
+                    <div class="insurance-logo">🔴</div>
+                    <div class="insurance-name">AXA</div>
+                    <div class="insurance-type">Assurance Privée</div>
+                </div>
+                
+                <div class="insurance-card">
+                    <div class="insurance-logo">🟢</div>
+                    <div class="insurance-name">Wafa IMA</div>
+                    <div class="insurance-type">Assurance Privée</div>
+                </div>
+                
+                <div class="insurance-card">
+                    <div class="insurance-logo">🟠</div>
+                    <div class="insurance-name">RMA</div>
+                    <div class="insurance-type">Assurance Privée</div>
+                </div>
+                
+                <div class="insurance-card">
+                    <div class="insurance-logo">🟣</div>
+                    <div class="insurance-name">MAMDA</div>
+                    <div class="insurance-type">Mutuelle</div>
+                </div>
+                
+                <div class="insurance-card">
+                    <div class="insurance-logo">🟡</div>
+                    <div class="insurance-name">MGPAP</div>
+                    <div class="insurance-type">Mutuelle</div>
+                </div>
+                
+                <div class="insurance-card">
+                    <div class="insurance-logo">⚫</div>
+                    <div class="insurance-name">Atlanta</div>
+                    <div class="insurance-type">Assurance Privée</div>
+                </div>
+                
+                <div class="insurance-card">
+                    <div class="insurance-logo">⚪</div>
+                    <div class="insurance-name">Allianz</div>
+                    <div class="insurance-type">Assurance Privée</div>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 30px; color: #666;">
+                Et plus de 20 autres partenaires assurances et mutuelles
+            </p>
+        </section>
+        
+        <!-- Conventions -->
+        <section class="container">
+            <div class="convention-section">
+                <h3 style="color: #333; margin-bottom: 10px;">🤝 Conventions et Prises en Charge</h3>
+                <p style="color: #666;">Nous facilitons vos démarches administratives</p>
+                
+                <div class="convention-list">
+                    <div class="convention-item">
+                        <div class="convention-icon">✓</div>
+                        <div>
+                            <strong>Tiers Payant</strong><br>
+                            <span style="font-size: 14px; color: #666;">Pas d'avance de frais avec nos partenaires</span>
+                        </div>
+                    </div>
+                    
+                    <div class="convention-item">
+                        <div class="convention-icon">✓</div>
+                        <div>
+                            <strong>Prise en Charge Directe</strong><br>
+                            <span style="font-size: 14px; color: #666;">Transmission directe à votre assurance</span>
+                        </div>
+                    </div>
+                    
+                    <div class="convention-item">
+                        <div class="convention-icon">✓</div>
+                        <div>
+                            <strong>Devis Gratuit</strong><br>
+                            <span style="font-size: 14px; color: #666;">Estimation détaillée avant intervention</span>
+                        </div>
+                    </div>
+                    
+                    <div class="convention-item">
+                        <div class="convention-icon">✓</div>
+                        <div>
+                            <strong>Assistance Administrative</strong><br>
+                            <span style="font-size: 14px; color: #666;">Aide pour vos dossiers de remboursement</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Moyens de Paiement -->
+        <section class="container">
+            <div class="payment-methods">
+                <h3 style="color: #333; margin-bottom: 10px;">💳 Moyens de Paiement Acceptés</h3>
+                <p style="color: #666;">Plusieurs options pour faciliter votre règlement</p>
+                
+                <div class="payment-grid">
+                    <div class="payment-item">
+                        <div class="payment-icon">💵</div>
+                        <div>Espèces</div>
+                    </div>
+                    
+                    <div class="payment-item">
+                        <div class="payment-icon">💳</div>
+                        <div>Carte Bancaire</div>
+                    </div>
+                    
+                    <div class="payment-item">
+                        <div class="payment-icon">📝</div>
+                        <div>Chèque</div>
+                    </div>
+                    
+                    <div class="payment-item">
+                        <div class="payment-icon">🏦</div>
+                        <div>Virement</div>
+                    </div>
+                    
+                    <div class="payment-item">
+                        <div class="payment-icon">📱</div>
+                        <div>Mobile Payment</div>
+                    </div>
+                </div>
+                
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 30px;">
+                    <p style="color: #666; margin: 0;">
+                        <strong>Facilités de paiement :</strong> Pour les interventions importantes, 
+                        possibilité d'échelonnement sur 3 à 6 mois sans frais (sous conditions).
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Estimateur de Coûts -->
+        <section class="container">
+            <div class="cost-estimator">
+                <h3 style="color: #333; margin-bottom: 10px;">🧮 Estimateur de Coûts</h3>
+                <p style="color: #666;">Obtenez une estimation approximative de vos frais médicaux</p>
+                
+                <form class="estimator-form">
+                    <div class="form-group">
+                        <label>Type de Prestation</label>
+                        <select id="serviceType">
+                            <option value="">Sélectionnez...</option>
+                            <option value="consultation">Consultation</option>
+                            <option value="examen">Examen / Analyse</option>
+                            <option value="hospitalisation">Hospitalisation</option>
+                            <option value="chirurgie">Chirurgie</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Spécialité / Service</label>
+                        <select id="specialty">
+                            <option value="">Sélectionnez...</option>
+                            <option value="general">Médecine Générale</option>
+                            <option value="cardio">Cardiologie</option>
+                            <option value="ophtalmo">Ophtalmologie</option>
+                            <option value="pediatrie">Pédiatrie</option>
+                            <option value="gyneco">Gynécologie</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Type d'Assurance</label>
+                        <select id="insurance">
+                            <option value="">Sélectionnez...</option>
+                            <option value="cnss">CNSS</option>
+                            <option value="cnops">CNOPS</option>
+                            <option value="private">Assurance Privée</option>
+                            <option value="none">Sans Assurance</option>
+                        </select>
+                    </div>
+                    
+                    <button type="button" class="estimate-button" onclick="calculateEstimate()">
+                        Calculer l'Estimation
+                    </button>
+                </form>
+                
+                <div id="estimateResult" style="display: none; margin-top: 30px; padding: 20px; background: #e8f5e9; border-radius: 10px;">
+                    <h4 style="color: #00b894; margin-bottom: 10px;">Estimation :</h4>
+                    <p id="estimateText" style="color: #333; font-size: 18px;"></p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FAQ Tarification -->
+        <section class="container">
+            <div class="faq-pricing">
+                <h2 style="text-align: center; color: #333; margin-bottom: 50px;">Questions Fréquentes sur la Tarification</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Comment fonctionne le tiers payant ?</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p style="color: #666;">Le tiers payant vous permet de ne pas avancer les frais médicaux. Nous nous chargeons de facturer directement votre assurance ou mutuelle pour la part prise en charge. Vous ne réglez que le ticket modérateur (reste à charge).</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Puis-je obtenir un devis avant une intervention ?</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p style="color: #666;">Oui, nous établissons systématiquement un devis détaillé pour toute intervention programmée. Ce devis est gratuit et vous permet de faire votre demande de prise en charge auprès de votre assurance.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quels documents pour une prise en charge ?</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p style="color: #666;">Vous devez présenter : votre carte d'assuré, une pièce d'identité, l'accord de prise en charge de votre assurance (si nécessaire), et l'ordonnance médicale pour les actes prescrits.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Les tarifs incluent-ils tous les frais ?</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p style="color: #666;">Les tarifs affichés sont indicatifs. Le coût final dépend de plusieurs facteurs : durée d'hospitalisation, examens complémentaires, médicaments spécifiques, etc. Un devis précis vous sera remis.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section style="background: linear-gradient(135deg, #00b894, #00cec9); padding: 60px 0;">
+            <div class="container" style="text-align: center;">
+                <h2 style="color: white; margin-bottom: 20px;">Service Facturation à Votre Écoute</h2>
+                <p style="color: white; font-size: 1.1rem; margin-bottom: 30px;">
+                    Notre équipe vous accompagne dans toutes vos démarches administratives
+                </p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="tel:0539123456" class="btn btn-primary" style="background: white; color: #00b894;">
+                        📞 05 39 12 34 56
+                    </a>
+                    <a href="../contact/formulaire.html" class="btn btn-secondary" style="background: transparent; color: white; border: 2px solid white;">
+                        ✉️ Demander un devis
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <div id="footer-container"></div>
+    
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
+    <script>
+        // Charger le header et le footer
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                if (typeof initHeader === 'function') {
+                    setTimeout(initHeader, 100);
+                }
+            });
+            
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+                if (typeof initFooter === 'function') {
+                    setTimeout(initFooter, 100);
+                }
+            });
+        
+        // FAQ Accordion
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', function() {
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    item.classList.toggle('active');
+                });
+            });
+        });
+        
+        // Calculateur d'estimation
+        function calculateEstimate() {
+            const serviceType = document.getElementById('serviceType').value;
+            const specialty = document.getElementById('specialty').value;
+            const insurance = document.getElementById('insurance').value;
+            
+            if (!serviceType || !specialty || !insurance) {
+                alert('Veuillez remplir tous les champs');
+                return;
+            }
+            
+            // Logique simplifiée pour l'estimation
+            let basePrice = 0;
+            let coverage = 0;
+            
+            // Prix de base selon le service
+            switch(serviceType) {
+                case 'consultation':
+                    basePrice = specialty === 'general' ? 200 : 400;
+                    break;
+                case 'examen':
+                    basePrice = 800;
+                    break;
+                case 'hospitalisation':
+                    basePrice = 1200;
+                    break;
+                case 'chirurgie':
+                    basePrice = 15000;
+                    break;
+            }
+            
+            // Taux de remboursement selon l'assurance
+            switch(insurance) {
+                case 'cnss':
+                case 'cnops':
+                    coverage = 0.7;
+                    break;
+                case 'private':
+                    coverage = 0.8;
+                    break;
+                case 'none':
+                    coverage = 0;
+                    break;
+            }
+            
+            const totalCost = basePrice;
+            const insuranceCoverage = totalCost * coverage;
+            const patientCost = totalCost - insuranceCoverage;
+            
+            const resultDiv = document.getElementById('estimateResult');
+            const resultText = document.getElementById('estimateText');
+            
+            resultText.innerHTML = `
+                Coût total estimé : <strong>${totalCost} DH</strong><br>
+                Prise en charge assurance : <strong>${insuranceCoverage} DH</strong><br>
+                Reste à charge : <strong style="color: #00b894; font-size: 24px;">${patientCost} DH</strong>
+            `;
+            
+            resultDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

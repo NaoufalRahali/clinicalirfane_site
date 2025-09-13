@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Médecins de garde - Clinique Alirfane Tanger">
+    <title>Médecins de Garde - Clinique Alirfane Tanger</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .garde-hero {
+            background: linear-gradient(135deg, #ff5722, #e64a19);
+            padding: 100px 0 60px;
+            color: white;
+            text-align: center;
+        }
+        
+        .emergency-banner {
+            background: #fff3e0;
+            border-left: 5px solid #ff5722;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .emergency-banner h2 {
+            color: #ff5722;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .emergency-number {
+            font-size: 32px;
+            color: #ff5722;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .garde-calendar {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin: 40px 0;
+        }
+        
+        .calendar-header {
+            background: linear-gradient(135deg, #ff5722, #e64a19);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .calendar-nav button {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .calendar-nav button:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .garde-schedule {
+            padding: 30px;
+        }
+        
+        .day-schedule {
+            border-bottom: 1px solid #e0e0e0;
+            padding: 20px 0;
+        }
+        
+        .day-schedule:last-child {
+            border-bottom: none;
+        }
+        
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .day-date {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .day-badge {
+            background: #4caf50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        
+        .day-badge.today {
+            background: #ff5722;
+        }
+        
+        .garde-slots {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .garde-slot {
+            display: grid;
+            grid-template-columns: 150px 1fr auto;
+            align-items: center;
+            gap: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .slot-time {
+            font-weight: 600;
+            color: #ff5722;
+        }
+        
+        .slot-doctor {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .doctor-mini-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .doctor-info {
+            flex: 1;
+        }
+        
+        .doctor-info .name {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .doctor-info .specialty {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .contact-btn {
+            background: #ff5722;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+        
+        .contact-btn:hover {
+            background: #e64a19;
+        }
+        
+        .info-section {
+            background: #f8f9fa;
+            padding: 60px 0;
+            margin-top: 60px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .info-card h3 {
+            color: #ff5722;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .info-card li {
+            padding: 8px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .info-card li::before {
+            content: "✓";
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .garde-slot {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .calendar-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .calendar-nav {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+    
+    <!-- Contenu Principal -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="garde-hero">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 20px;">Service de Garde</h1>
+                <p style="font-size: 1.25rem; opacity: 0.95;">Médecins disponibles 24h/24, 7j/7 pour les urgences</p>
+            </div>
+        </section>
+        
+        <!-- Bannière d'urgence -->
+        <section class="container">
+            <div class="emergency-banner">
+                <h2>🚨 Urgence Médicale ?</h2>
+                <p style="margin-bottom: 15px;">Pour toute urgence médicale, contactez immédiatement notre service d'urgences :</p>
+                <div class="emergency-number">
+                    <span>📞</span>
+                    <a href="tel:0539123456" style="color: #ff5722; text-decoration: none;">05 39 12 34 56</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Planning de garde -->
+        <section class="container">
+            <div class="garde-calendar">
+                <div class="calendar-header">
+                    <h2 style="margin: 0;">Planning de Garde - Décembre 2024</h2>
+                    <div class="calendar-nav">
+                        <button onclick="changeMonth(-1)">← Novembre</button>
+                        <button onclick="changeMonth(1)">Janvier →</button>
+                    </div>
+                </div>
+                
+                <div class="garde-schedule">
+                    <!-- Aujourd'hui -->
+                    <div class="day-schedule">
+                        <div class="day-header">
+                            <span class="day-date">Aujourd'hui - Lundi 16 Décembre</span>
+                            <span class="day-badge today">AUJOURD'HUI</span>
+                        </div>
+                        <div class="garde-slots">
+                            <div class="garde-slot">
+                                <span class="slot-time">00h00 - 08h00</span>
+                                <div class="slot-doctor">
+                                    <div class="doctor-mini-avatar">👨‍⚕️</div>
+                                    <div class="doctor-info">
+                                        <div class="name">Dr. Hassan Berrada</div>
+                                        <div class="specialty">Médecine Générale</div>
+                                    </div>
+                                </div>
+                                <a href="tel:0539123456" class="contact-btn">Appeler</a>
+                            </div>
+                            
+                            <div class="garde-slot">
+                                <span class="slot-time">08h00 - 16h00</span>
+                                <div class="slot-doctor">
+                                    <div class="doctor-mini-avatar">👩‍⚕️</div>
+                                    <div class="doctor-info">
+                                        <div class="name">Dr. Fatima Alaoui</div>
+                                        <div class="specialty">Médecine Générale</div>
+                                    </div>
+                                </div>
+                                <a href="tel:0539123456" class="contact-btn">Appeler</a>
+                            </div>
+                            
+                            <div class="garde-slot">
+                                <span class="slot-time">16h00 - 00h00</span>
+                                <div class="slot-doctor">
+                                    <div class="doctor-mini-avatar">👨‍⚕️</div>
+                                    <div class="doctor-info">
+                                        <div class="name">Dr. Mohamed Tazi</div>
+                                        <div class="specialty">Urgentiste</div>
+                                    </div>
+                                </div>
+                                <a href="tel:0539123456" class="contact-btn">Appeler</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Demain -->
+                    <div class="day-schedule">
+                        <div class="day-header">
+                            <span class="day-date">Mardi 17 Décembre</span>
+                            <span class="day-badge">DEMAIN</span>
+                        </div>
+                        <div class="garde-slots">
+                            <div class="garde-slot">
+                                <span class="slot-time">00h00 - 08h00</span>
+                                <div class="slot-doctor">
+                                    <div class="doctor-mini-avatar">👩‍⚕️</div>
+                                    <div class="doctor-info">
+                                        <div class="name">Dr. Sarah Benjelloun</div>
+                                        <div class="specialty">Médecine Générale</div>
+                                    </div>
+                                </div>
+                                <a href="tel:0539123456" class="contact-btn">Appeler</a>
+                            </div>
+                            
+                            <div class="garde-slot">
+                                <span class="slot-time">08h00 - 16h00</span>
+                                <div class="slot-doctor">
+                                    <div class="doctor-mini-avatar">👨‍⚕️</div>
+                                    <div class="doctor-info">
+                                        <div class="name">Dr. Ahmed Benali</div>
+                                        <div class="specialty">Cardiologue</div>
+                                    </div>
+                                </div>
+                                <a href="tel:0539123456" class="contact-btn">Appeler</a>
+                            </div>
+                            
+                            <div class="garde-slot">
+                                <span class="slot-time">16h00 - 00h00</span>
+                                <div class="slot-doctor">
+                                    <div class="doctor-mini-avatar">👨‍⚕️</div>
+                                    <div class="doctor-info">
+                                        <div class="name">Dr. Khalid Mansouri</div>
+                                        <div class="specialty">Urgentiste</div>
+                                    </div>
+                                </div>
+                                <a href="tel:0539123456" class="contact-btn">Appeler</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mercredi -->
+                    <div class="day-schedule">
+                        <div class="day-header">
+                            <span class="day-date">Mercredi 18 Décembre</span>
+                            <span class="day-badge">GARDE</span>
+                        </div>
+                        <div class="garde-slots">
+                            <div class="garde-slot">
+                                <span class="slot-time">00h00 - 08h00</span>
+                                <div class="slot-doctor">
+                                    <div class="doctor-mini-avatar">👨‍⚕️</div>
+                                    <div class="doctor-info">
+                                        <div class="name">Dr. Youssef Alami</div>
+                                        <div class="specialty">Médecine Générale</div>
+                                    </div>
+                                </div>
+                                <a href="tel:0539123456" class="contact-btn">Appeler</a>
+                            </div>
+                            
+                            <div class="garde-slot">
+                                <span class="slot-time">08h00 - 16h00</span>
+                                <div class="slot-doctor">
+                                    <div class="doctor-mini-avatar">👩‍⚕️</div>
+                                    <div class="doctor-info">
+                                        <div class="name">Dr. Leila Idrissi</div>
+                                        <div class="specialty">Gynécologue</div>
+                                    </div>
+                                </div>
+                                <a href="tel:0539123456" class="contact-btn">Appeler</a>
+                            </div>
+                            
+                            <div class="garde-slot">
+                                <span class="slot-time">16h00 - 00h00</span>
+                                <div class="slot-doctor">
+                                    <div class="doctor-mini-avatar">👨‍⚕️</div>
+                                    <div class="doctor-info">
+                                        <div class="name">Dr. Hassan Berrada</div>
+                                        <div class="specialty">Urgentiste</div>
+                                    </div>
+                                </div>
+                                <a href="tel:0539123456" class="contact-btn">Appeler</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Jeudi -->
+                    <div class="day-schedule">
+                        <div class="day-header">
+                            <span class="day-date">Jeudi 19 Décembre</span>
+                            <span class="day-badge">GARDE</span>
+                        </div>
+                        <div class="garde-slots">
+                            <div class="garde-slot">
+                                <span class="slot-time">00h00 - 08h00</span>
+                                <div class="slot-doctor">
+                                    <div class="doctor-mini-avatar">👩‍⚕️</div>
+                                    <div class="doctor-info">
+                                        <div class="name">Dr. Amina Zaki</div>
+                                        <div class="specialty">Médecine Générale</div>
+                                    </div>
+                                </div>
+                                <a href="tel:0539123456" class="contact-btn">Appeler</a>
+                            </div>
+                            
+                            <div class="garde-slot">
+                                <span class="slot-time">08h00 - 16h00</span>
+                                <div class="slot-doctor">
+                                    <div class="doctor-mini-avatar">👨‍⚕️</div>
+                                    <div class="doctor-info">
+                                        <div class="name">Dr. Rachid Bennani</div>
+                                        <div class="specialty">Médecine Interne</div>
+                                    </div>
+                                </div>
+                                <a href="tel:0539123456" class="contact-btn">Appeler</a>
+                            </div>
+                            
+                            <div class="garde-slot">
+                                <span class="slot-time">16h00 - 00h00</span>
+                                <div class="slot-doctor">
+                                    <div class="doctor-mini-avatar">👩‍⚕️</div>
+                                    <div class="doctor-info">
+                                        <div class="name">Dr. Nadia Filali</div>
+                                        <div class="specialty">Urgentiste</div>
+                                    </div>
+                                </div>
+                                <a href="tel:0539123456" class="contact-btn">Appeler</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section d'information -->
+        <section class="info-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 50px;">Informations Pratiques</h2>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>📋 Service de Garde</h3>
+                        <ul>
+                            <li>Disponible 24h/24, 7j/7</li>
+                            <li>Médecins qualifiés et expérimentés</li>
+                            <li>Prise en charge rapide</li>
+                            <li>Coordination avec les services d'urgence</li>
+                            <li>Suivi médical assuré</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>🚨 Quand Appeler ?</h3>
+                        <ul>
+                            <li>Douleur thoracique intense</li>
+                            <li>Difficultés respiratoires</li>
+                            <li>Perte de conscience</li>
+                            <li>Traumatisme important</li>
+                            <li>Fièvre élevée persistante</li>
+                            <li>Réaction allergique sévère</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>📍 Comment Venir ?</h3>
+                        <ul>
+                            <li>Adresse: Mesnana, 90000 Tanger</li>
+                            <li>Parking gratuit disponible</li>
+                            <li>Accès ambulance dédié</li>
+                            <li>Entrée urgences séparée</li>
+                            <li>Signalisation claire</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section Tarifs de garde -->
+        <section class="container" style="padding: 60px 20px;">
+            <div style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                <h2 style="color: #333; margin-bottom: 30px;">Tarifs de Garde</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                    <div style="text-align: center; padding: 20px;">
+                        <h3 style="color: #ff5722; margin-bottom: 10px;">Consultation de Garde</h3>
+                        <p style="font-size: 32px; font-weight: 700; color: #333;">350 DH</p>
+                        <p style="color: #666; font-size: 14px;">Nuit (20h-8h) et weekends</p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 20px; border-left: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0;">
+                        <h3 style="color: #ff5722; margin-bottom: 10px;">Urgence Vitale</h3>
+                        <p style="font-size: 32px; font-weight: 700; color: #333;">Prise en charge</p>
+                        <p style="color: #666; font-size: 14px;">Immédiate sans avance</p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 20px;">
+                        <h3 style="color: #ff5722; margin-bottom: 10px;">Majoration Weekend</h3>
+                        <p style="font-size: 32px; font-weight: 700; color: #333;">+50 DH</p>
+                        <p style="color: #666; font-size: 14px;">Samedi et dimanche</p>
+                    </div>
+                </div>
+                
+                <div style="background: #fff3e0; padding: 20px; border-radius: 10px; margin-top: 30px;">
+                    <p style="color: #ff5722; margin: 0;">
+                        <strong>ℹ️ Information importante :</strong><br>
+                        Les tarifs de garde sont appliqués en dehors des heures normales de consultation. 
+                        Pour les patients bénéficiant d'une couverture médicale, une prise en charge peut être effectuée selon votre contrat.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section FAQ -->
+        <section class="container" style="padding: 60px 20px;">
+            <h2 style="text-align: center; color: #333; margin-bottom: 50px;">Questions Fréquentes</h2>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <details style="background: white; margin-bottom: 15px; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <summary style="cursor: pointer; font-weight: 600; color: #333;">Comment fonctionne le service de garde ?</summary>
+                    <p style="margin-top: 15px; color: #666;">
+                        Notre service de garde assure une permanence médicale 24h/24 et 7j/7. Des médecins qualifiés sont toujours disponibles pour les urgences et les consultations en dehors des heures normales.
+                    </p>
+                </details>
+                
+                <details style="background: white; margin-bottom: 15px; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <summary style="cursor: pointer; font-weight: 600; color: #333;">Quelle est la différence entre garde et urgence ?</summary>
+                    <p style="margin-top: 15px; color: #666;">
+                        Le service de garde traite les consultations non programmées en dehors des heures ouvrables. Les urgences vitales sont prises en charge immédiatement par notre service d'urgences spécialisé.
+                    </p>
+                </details>
+                
+                <details style="background: white; margin-bottom: 15px; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <summary style="cursor: pointer; font-weight: 600; color: #333;">Les consultations de garde sont-elles remboursées ?</summary>
+                    <p style="margin-top: 15px; color: #666;">
+                        Oui, les consultations de garde sont prises en charge par la plupart des assurances et mutuelles. Vérifiez les conditions de votre contrat pour connaître le taux de remboursement.
+                    </p>
+                </details>
+                
+                <details style="background: white; margin-bottom: 15px; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <summary style="cursor: pointer; font-weight: 600; color: #333;">Puis-je choisir mon médecin de garde ?</summary>
+                    <p style="margin-top: 15px; color: #666;">
+                        Le médecin de garde est désigné selon un planning établi. Cependant, vous pouvez consulter notre planning ci-dessus pour connaître le médecin de garde du jour.
+                    </p>
+                </details>
+            </div>
+        </section>
+        
+        <!-- Section Contact d'urgence -->
+        <section style="background: linear-gradient(135deg, #ff5722, #e64a19); padding: 60px 0;">
+            <div class="container" style="text-align: center;">
+                <h2 style="color: white; margin-bottom: 20px;">Urgence Médicale ?</h2>
+                <p style="color: white; font-size: 1.1rem; margin-bottom: 30px;">
+                    N'hésitez pas à nous contacter immédiatement
+                </p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="tel:0539123456" class="btn btn-primary" style="background: white; color: #ff5722; padding: 15px 30px; font-size: 18px;">
+                        📞 05 39 12 34 56
+                    </a>
+                    <a href="../contact/plan-acces.html" class="btn btn-secondary" style="background: transparent; color: white; border: 2px solid white;">
+                        📍 Plan d'accès
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <div id="footer-container"></div>
+    
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
+    <script>
+        // Charger le header et le footer
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                if (typeof initHeader === 'function') {
+                    setTimeout(initHeader, 100);
+                }
+            })
+            .catch(error => console.error('Erreur chargement header:', error));
+            
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+                if (typeof initFooter === 'function') {
+                    setTimeout(initFooter, 100);
+                }
+            })
+            .catch(error => console.error('Erreur chargement footer:', error));
+        
+        // Fonction pour changer de mois
+        function changeMonth(direction) {
+            // Simulation du changement de mois
+            alert(direction > 0 ? 'Mois suivant' : 'Mois précédent');
+            // Ici vous pouvez implémenter la logique réelle de changement de mois
+        }
+        
+        // Mettre à jour automatiquement la date et l'heure
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+        }
+        
+        // Mettre à jour toutes les minutes
+        updateDateTime();
+        setInterval(updateDateTime, 60000);
+        
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observer les cartes d'information
+        document.querySelectorAll('.info-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.5s ease';
+            observer.observe(card);
+        });
+        
+        // Fonction pour télécharger le planning
+        function downloadSchedule() {
+            alert('Le planning de garde sera téléchargé en PDF');
+            // Ici vous pouvez implémenter le téléchargement réel du PDF
+        }
+        
+        // Bouton flottant pour télécharger le planning
+        const downloadBtn = document.createElement('button');
+        downloadBtn.innerHTML = '📥 Télécharger le planning';
+        downloadBtn.style.cssText = `
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: #ff5722;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255,87,34,0.3);
+            z-index: 100;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        `;
+        
+        downloadBtn.onmouseover = function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0 6px 20px rgba(255,87,34,0.4)';
+        };
+        
+        downloadBtn.onmouseout = function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 4px 15px rgba(255,87,34,0.3)';
+        };
+        
+        downloadBtn.onclick = downloadSchedule;
+        
+        // Ajouter le bouton après le chargement
+        window.addEventListener('load', function() {
+            document.body.appendChild(downloadBtn);
+        });
+        
+        // Gérer le responsive pour le bouton
+        function handleResponsive() {
+            if (window.innerWidth < 768) {
+                downloadBtn.style.bottom = '70px';
+                downloadBtn.style.right = '10px';
+                downloadBtn.style.fontSize = '12px';
+                downloadBtn.style.padding = '10px 15px';
+            } else {
+                downloadBtn.style.bottom = '80px';
+                downloadBtn.style.right = '20px';
+                downloadBtn.style.fontSize = '14px';
+                downloadBtn.style.padding = '12px 20px';
+            }
+        }
+        
+        window.addEventListener('resize', handleResponsive);
+        handleResponsive();
+    </script>
+</body>
+</html>

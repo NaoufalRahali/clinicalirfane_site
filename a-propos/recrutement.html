@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Recrutement et Carrières - Clinique Alirfane Tanger">
+    <title>Rejoignez Notre Équipe - Clinique Alirfane Tanger</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .recrutement-hero {
+            background: linear-gradient(135deg, #14b8a6, #0891b2);
+            padding: 100px 0 60px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+        }
+        
+        .hero-bg::before,
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+        }
+        
+        .hero-bg::before {
+            width: 400px;
+            height: 400px;
+            top: -200px;
+            right: -100px;
+        }
+        
+        .hero-bg::after {
+            width: 300px;
+            height: 300px;
+            bottom: -150px;
+            left: -50px;
+        }
+        
+        .why-join {
+            padding: 80px 0;
+        }
+        
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .reason-card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .reason-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .reason-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #14b8a6, #0891b2);
+            color: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 20px;
+        }
+        
+        .reason-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 15px;
+        }
+        
+        .reason-text {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        .jobs-section {
+            background: #f9fafb;
+            padding: 80px 0;
+        }
+        
+        .job-filters {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        
+        .filter-select {
+            padding: 10px 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 25px;
+            background: white;
+            color: #6b7280;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .jobs-list {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .job-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .job-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            transform: translateX(5px);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 20px;
+        }
+        
+        .job-title-section {
+            flex: 1;
+        }
+        
+        .job-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+        
+        .job-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .meta-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 12px;
+            background: #f3f4f6;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #6b7280;
+        }
+        
+        .job-badge {
+            padding: 5px 15px;
+            background: linear-gradient(135deg, #14b8a6, #0891b2);
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .job-description {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .job-requirements {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .requirement-chip {
+            padding: 4px 12px;
+            background: #e0f2fe;
+            color: #0369a1;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+        
+        .job-expanded {
+            display: none;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 20px;
+        }
+        
+        .job-expanded.show {
+            display: block;
+        }
+        
+        .job-section {
+            margin-bottom: 25px;
+        }
+        
+        .job-section-title {
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+        
+        .job-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .job-list li {
+            padding: 8px 0;
+            color: #6b7280;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .job-list li::before {
+            content: '✓';
+            color: #14b8a6;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .apply-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #14b8a6, #0891b2);
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+        
+        .apply-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .process-section {
+            padding: 80px 0;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border: 3px solid #14b8a6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-line {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background: #14b8a6;
+            z-index: 1;
+        }
+        
+        .process-step:last-child .step-line {
+            display: none;
+        }
+        
+        .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+        
+        .step-desc {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .benefits-section {
+            background: linear-gradient(135deg, #f0fdfa, #f0f9ff);
+            padding: 80px 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .benefit-card {
+            display: flex;
+            gap: 25px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #14b8a6, #0891b2);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .benefit-content {
+            flex: 1;
+        }
+        
+        .benefit-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+        
+        .benefit-text {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        .testimonials-section {
+            padding: 80px 0;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        
+        .quote-icon {
+            font-size: 48px;
+            color: #14b8a6;
+            opacity: 0.2;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        .testimonial-text {
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #14b8a6, #0891b2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .author-info {
+            flex: 1;
+        }
+        
+        .author-name {
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 3px;
+        }
+        
+        .author-role {
+            color: #6b7280;
+            font-size: 13px;
+        }
+        
+        .apply-section {
+            background: linear-gradient(135deg, #14b8a6, #0891b2);
+            padding: 80px 0;
+        }
+        
+        .apply-form {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .form-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #111827;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-upload {
+            border: 2px dashed #e5e7eb;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-upload:hover {
+            border-color: #14b8a6;
+            background: #f0fdfa;
+        }
+        
+        .upload-icon {
+            font-size: 48px;
+            color: #9ca3af;
+            margin-bottom: 10px;
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #14b8a6, #0891b2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .form-submit:hover {
+            transform: scale(1.02);
+        }
+        
+        @media (max-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+    
+    <!-- Contenu Principal -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="recrutement-hero">
+            <div class="hero-bg"></div>
+            <div class="container" style="position: relative;">
+                <h1 style="font-size: 3rem; margin-bottom: 20px;">Rejoignez Notre Équipe</h1>
+                <p style="font-size: 1.25rem; opacity: 0.95; max-width: 700px; margin: 0 auto;">
+                    Construisons ensemble l'avenir de la santé à la Clinique Alirfane
+                </p>
+            </div>
+        </section>
+        
+        <!-- Pourquoi nous rejoindre -->
+        <section class="why-join">
+            <div class="container">
+                <h2 style="text-align: center; color: #111827; margin-bottom: 20px;">Pourquoi Rejoindre la Clinique Alirfane ?</h2>
+                <p style="text-align: center; color: #6b7280; max-width: 700px; margin: 0 auto;">
+                    Découvrez ce qui fait de notre clinique un lieu de travail exceptionnel
+                </p>
+                
+                <div class="reasons-grid">
+                    <div class="reason-card">
+                        <div class="reason-icon">🚀</div>
+                        <h3 class="reason-title">Évolution de Carrière</h3>
+                        <p class="reason-text">
+                            Opportunités de développement professionnel et plans de carrière personnalisés
+                        </p>
+                    </div>
+                    
+                    <div class="reason-card">
+                        <div class="reason-icon">📚</div>
+                        <h3 class="reason-title">Formation Continue</h3>
+                        <p class="reason-text">
+                            Programmes de formation réguliers et participation aux conférences internationales
+                        </p>
+                    </div>
+                    
+                    <div class="reason-card">
+                        <div class="reason-icon">💡</div>
+                        <h3 class="reason-title">Innovation</h3>
+                        <p class="reason-text">
+                            Travaillez avec les dernières technologies médicales et participez à la recherche
+                        </p>
+                    </div>
+                    
+                    <div class="reason-card">
+                        <div class="reason-icon">👥</div>
+                        <h3 class="reason-title">Équipe Dynamique</h3>
+                        <p class="reason-text">
+                            Environnement collaboratif avec des professionnels passionnés et experts
+                        </p>
+                    </div>
+                    
+                    <div class="reason-card">
+                        <div class="reason-icon">⚖️</div>
+                        <h3 class="reason-title">Équilibre de Vie</h3>
+                        <p class="reason-text">
+                            Respect de l'équilibre vie professionnelle et personnelle
+                        </p>
+                    </div>
+                    
+                    <div class="reason-card">
+                        <div class="reason-icon">🏆</div>
+                        <h3 class="reason-title">Excellence Reconnue</h3>
+                        <p class="reason-text">
+                            Faites partie d'une institution reconnue pour son excellence médicale
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Offres d'emploi -->
+        <section class="jobs-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #111827; margin-bottom: 20px;">Postes Ouverts</h2>
+                <p style="text-align: center; color: #6b7280; max-width: 700px; margin: 0 auto 40px;">
+                    Explorez nos opportunités actuelles
+                </p>
+                
+                <div class="job-filters">
+                    <select class="filter-select">
+                        <option>Tous les départements</option>
+                        <option>Médical</option>
+                        <option>Soins infirmiers</option>
+                        <option>Administration</option>
+                        <option>Technique</option>
+                        <option>Support</option>
+                    </select>
+                    
+                    <select class="filter-select">
+                        <option>Type de contrat</option>
+                        <option>CDI</option>
+                        <option>CDD</option>
+                        <option>Stage</option>
+                        <option>Alternance</option>
+                    </select>
+                    
+                    <select class="filter-select">
+                        <option>Niveau d'expérience</option>
+                        <option>Débutant</option>
+                        <option>Junior (1-3 ans)</option>
+                        <option>Confirmé (3-5 ans)</option>
+                        <option>Senior (5+ ans)</option>
+                    </select>
+                </div>
+                
+                <div class="jobs-list">
+                    <!-- Poste 1 -->
+                    <div class="job-card" onclick="toggleJob(this)">
+                        <div class="job-header">
+                            <div class="job-title-section">
+                                <h3 class="job-title">Médecin Anesthésiste-Réanimateur</h3>
+                                <div class="job-meta">
+                                    <span class="meta-tag">📍 Tanger</span>
+                                    <span class="meta-tag">💼 CDI</span>
+                                    <span class="meta-tag">⏰ Temps plein</span>
+                                </div>
+                            </div>
+                            <span class="job-badge">Urgent</span>
+                        </div>
+                        <p class="job-description">
+                            Nous recherchons un médecin anesthésiste-réanimateur expérimenté pour rejoindre 
+                            notre équipe pluridisciplinaire et participer au développement de notre service.
+                        </p>
+                        <div class="job-requirements">
+                            <span class="requirement-chip">DES/CES Anesthésie</span>
+                            <span class="requirement-chip">5+ ans d'expérience</span>
+                            <span class="requirement-chip">Garde sur place</span>
+                        </div>
+                        
+                        <div class="job-expanded">
+                            <div class="job-section">
+                                <h4 class="job-section-title">Missions principales</h4>
+                                <ul class="job-list">
+                                    <li>Assurer les consultations pré-anesthésiques</li>
+                                    <li>Pratiquer l'anesthésie pour tous types d'interventions</li>
+                                    <li>Participer aux gardes et astreintes</li>
+                                    <li>Collaborer avec les équipes chirurgicales</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="job-section">
+                                <h4 class="job-section-title">Profil recherché</h4>
+                                <ul class="job-list">
+                                    <li>Diplôme de spécialité en anesthésie-réanimation</li>
+                                    <li>Inscription à l'Ordre des Médecins</li>
+                                    <li>Expérience en milieu hospitalier</li>
+                                    <li>Esprit d'équipe et excellentes capacités relationnelles</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="job-section">
+                                <h4 class="job-section-title">Nous offrons</h4>
+                                <ul class="job-list">
+                                    <li>Rémunération attractive et évolutive</li>
+                                    <li>Formation continue financée</li>
+                                    <li>Mutuelle santé premium</li>
+                                    <li>Prime de garde et avantages sociaux</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="margin-top: 30px;">
+                                <a href="#apply" class="apply-btn">Postuler maintenant</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Poste 2 -->
+                    <div class="job-card" onclick="toggleJob(this)">
+                        <div class="job-header">
+                            <div class="job-title-section">
+                                <h3 class="job-title">Infirmier(e) Bloc Opératoire (IBODE)</h3>
+                                <div class="job-meta">
+                                    <span class="meta-tag">📍 Tanger</span>
+                                    <span class="meta-tag">💼 CDI</span>
+                                    <span class="meta-tag">⏰ Temps plein</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="job-description">
+                            Rejoignez notre équipe de bloc opératoire moderne et participez à des interventions 
+                            variées dans un environnement technologique de pointe.
+                        </p>
+                        <div class="job-requirements">
+                            <span class="requirement-chip">Diplôme IBODE</span>
+                            <span class="requirement-chip">2+ ans d'expérience</span>
+                            <span class="requirement-chip">Polyvalence</span>
+                        </div>
+                        
+                        <div class="job-expanded">
+                            <!-- Contenu détaillé -->
+                        </div>
+                    </div>
+                    
+                    <!-- Poste 3 -->
+                    <div class="job-card" onclick="toggleJob(this)">
+                        <div class="job-header">
+                            <div class="job-title-section">
+                                <h3 class="job-title">Technicien(ne) en Radiologie</h3>
+                                <div class="job-meta">
+                                    <span class="meta-tag">📍 Tanger</span>
+                                    <span class="meta-tag">💼 CDI</span>
+                                    <span class="meta-tag">⏰ Temps plein</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="job-description">
+                            Nous recherchons un(e) technicien(ne) en radiologie pour notre service d'imagerie 
+                            équipé des dernières technologies (IRM, Scanner, Radio numérique).
+                        </p>
+                        <div class="job-requirements">
+                            <span class="requirement-chip">DTS Radiologie</span>
+                            <span class="requirement-chip">Maîtrise IRM/Scanner</span>
+                            <span class="requirement-chip">Travail posté</span>
+                        </div>
+                        
+                        <div class="job-expanded">
+                            <!-- Contenu détaillé -->
+                        </div>
+                    </div>
+                    
+                    <!-- Poste 4 -->
+                    <div class="job-card" onclick="toggleJob(this)">
+                        <div class="job-header">
+                            <div class="job-title-section">
+                                <h3 class="job-title">Responsable Qualité Hospitalière</h3>
+                                <div class="job-meta">
+                                    <span class="meta-tag">📍 Tanger</span>
+                                    <span class="meta-tag">💼 CDI</span>
+                                    <span class="meta-tag">⏰ Temps plein</span>
+                                </div>
+                            </div>
+                            <span class="job-badge">Nouveau</span>
+                        </div>
+                        <p class="job-description">
+                            Pilotez notre démarche qualité et contribuez au maintien de nos certifications 
+                            internationales (ISO 9001, JCI).
+                        </p>
+                        <div class="job-requirements">
+                            <span class="requirement-chip">Master Qualité</span>
+                            <span class="requirement-chip">3+ ans en milieu hospitalier</span>
+                            <span class="requirement-chip">Certification JCI</span>
+                        </div>
+                        
+                        <div class="job-expanded">
+                            <!-- Contenu détaillé -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Processus de recrutement -->
+        <section class="process-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #111827; margin-bottom: 20px;">Notre Processus de Recrutement</h2>
+                <p style="text-align: center; color: #6b7280; max-width: 700px; margin: 0 auto;">
+                    Un processus simple et transparent en 5 étapes
+                </p>
+                
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-icon">📝</div>
+                        <div class="step-line"></div>
+                        <h3 class="step-title">Candidature</h3>
+                        <p class="step-desc">
+                            Envoyez votre CV et lettre de motivation via notre formulaire
+                        </p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-icon">📋</div>
+                        <div class="step-line"></div>
+                        <h3 class="step-title">Présélection</h3>
+                        <p class="step-desc">
+                            Analyse de votre profil par notre équipe RH
+                        </p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-icon">💬</div>
+                        <div class="step-line"></div>
+                        <h3 class="step-title">Entretien RH</h3>
+                        <p class="step-desc">
+                            Premier échange pour mieux vous connaître
+                        </p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-icon">👥</div>
+                        <div class="step-line"></div>
+                        <h3 class="step-title">Entretien Technique</h3>
+                        <p class="step-desc">
+                            Rencontre avec votre futur responsable
+                        </p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-icon">✅</div>
+                        <h3 class="step-title">Décision</h3>
+                        <p class="step-desc">
+                            Réponse sous 48h et proposition de contrat
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Avantages -->
+        <section class="benefits-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #111827; margin-bottom: 20px;">Nos Avantages</h2>
+                <p style="text-align: center; color: #6b7280; max-width: 700px; margin: 0 auto;">
+                    Un package complet pour votre épanouissement professionnel
+                </p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">💰</div>
+                        <div class="benefit-content">
+                            <h3 class="benefit-title">Rémunération Attractive</h3>
+                            <p class="benefit-text">
+                                Salaires compétitifs, primes de performance et 13ème mois
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🏥</div>
+                        <div class="benefit-content">
+                            <h3 class="benefit-title">Couverture Santé</h3>
+                            <p class="benefit-text">
+                                Mutuelle premium pour vous et votre famille, soins gratuits à la clinique
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">📈</div>
+                        <div class="benefit-content">
+                            <h3 class="benefit-title">Développement</h3>
+                            <p class="benefit-text">
+                                Plans de carrière personnalisés et formations continues financées
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🏖️</div>
+                        <div class="benefit-content">
+                            <h3 class="benefit-title">Congés</h3>
+                            <p class="benefit-text">
+                                Congés payés généreux et flexibilité pour les événements familiaux
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Témoignages -->
+        <section class="testimonials-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #111827; margin-bottom: 20px;">Ils Témoignent</h2>
+                <p style="text-align: center; color: #6b7280; max-width: 700px; margin: 0 auto;">
+                    Découvrez l'expérience de nos collaborateurs
+                </p>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <span class="quote-icon">"</span>
+                        <p class="testimonial-text">
+                            Après 5 ans à la Clinique Alirfane, je peux dire que c'est un environnement 
+                            de travail exceptionnel. L'esprit d'équipe et les opportunités d'évolution 
+                            sont remarquables.
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">SB</div>
+                            <div class="author-info">
+                                <div class="author-name">Dr. Sarah Benani</div>
+                                <div class="author-role">Cardiologue</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <span class="quote-icon">"</span>
+                        <p class="testimonial-text">
+                            La formation continue est une réalité ici. J'ai pu participer à plusieurs 
+                            conférences internationales et développer mes compétences en soins intensifs.
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">KM</div>
+                            <div class="author-info">
+                                <div class="author-name">Karim Moussaoui</div>
+                                <div class="author-role">Infirmier en Chef</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <span class="quote-icon">"</span>
+                        <p class="testimonial-text">
+                            L'équilibre vie professionnelle-personnelle est respecté. La clinique 
+                            comprend l'importance du bien-être de ses employés pour offrir les meilleurs soins.
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">LT</div>
+                            <div class="author-info">
+                                <div class="author-name">Laila Tahiri</div>
+                                <div class="author-role">Responsable Laboratoire</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Formulaire de candidature -->
+        <section class="apply-section" id="apply">
+            <div class="container">
+                <div class="apply-form">
+                    <h2 class="form-title">Candidature Spontanée</h2>
+                    
+                    <form onsubmit="submitApplication(event)">
+                        <div class="form-group">
+                            <label class="form-label">Nom complet *</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Email *</label>
+                            <input type="email" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Téléphone *</label>
+                            <input type="tel" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Poste recherché</label>
+                            <select class="form-select">
+                                <option>Sélectionnez un poste</option>
+                                <option>Médecin</option>
+                                <option>Infirmier(e)</option>
+                                <option>Technicien(ne)</option>
+                                <option>Administration</option>
+                                <option>Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Message de motivation</label>
+                            <textarea class="form-textarea" placeholder="Parlez-nous de vous..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">CV et Lettre de motivation</label>
+                            <div class="form-upload" onclick="document.getElementById('fileInput').click()">
+                                <div class="upload-icon">📎</div>
+                                <p>Cliquez pour ajouter vos documents</p>
+                                <p style="font-size: 12px; color: #9ca3af;">PDF, DOC (Max 5MB)</p>
+                                <input type="file" id="fileInput" style="display: none;" accept=".pdf,.doc,.docx">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">Envoyer ma candidature</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <div id="footer-container"></div>
+    
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
+    <script>
+        // Charger le header et le footer
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                if (typeof initHeader === 'function') {
+                    setTimeout(initHeader, 100);
+                }
+            });
+            
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+                if (typeof initFooter === 'function') {
+                    setTimeout(initFooter, 100);
+                }
+            });
+        
+        // Toggle job details
+        function toggleJob(card) {
+            const expanded = card.querySelector('.job-expanded');
+            const isOpen = expanded.classList.contains('show');
+            
+            // Fermer tous les autres
+            document.querySelectorAll('.job-expanded').forEach(exp => {
+                exp.classList.remove('show');
+            });
+            
+            // Ouvrir/fermer celui-ci
+            if (!isOpen) {
+                expanded.classList.add('show');
+            }
+        }
+        
+        // Soumettre candidature
+        function submitApplication(event) {
+            event.preventDefault();
+            
+            const button = event.target.querySelector('.form-submit');
+            const originalText = button.textContent;
+            
+            button.textContent = 'Envoi en cours...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.textContent = '✓ Candidature envoyée';
+                button.style.background = '#10b981';
+                
+                // Réinitialiser après 3 secondes
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '';
+                    button.disabled = false;
+                    event.target.reset();
+                }, 3000);
+            }, 2000);
+        }
+        
+        // Gestion du fichier
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const uploadDiv = document.querySelector('.form-upload');
+                uploadDiv.querySelector('p').textContent = '✓ ' + file.name;
+                uploadDiv.style.borderColor = '#14b8a6';
+                uploadDiv.style.background = '#f0fdfa';
+            }
+        });
+        
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observer les éléments
+        document.querySelectorAll('.reason-card, .job-card, .process-step, .benefit-card, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

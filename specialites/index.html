@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Spécialités - Clinique Alirfane Tanger</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+</head>
+<body>
+    <div id="header-container"></div>
+    
+    <main class="main-content">
+        <div class="container">
+            <h1>Nos Spécialités Médicales</h1>
+            <div class="page-links">
+                <h2>Découvrez nos spécialités</h2>
+                <ul>
+                    <li><a href="cardiologie.html">Cardiologie</a></li>
+                    <li><a href="ophtalmologie.html">Ophtalmologie</a></li>
+                    <li><a href="algologie.html">Algologie</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    
+    <div id="footer-container"></div>
+    
+    <script src="../js/main.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('../components/header.html', 'header-container');
+            loadComponent('../components/footer.html', 'footer-container');
+        });
+        
+        function loadComponent(url, containerId) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(containerId).innerHTML = data;
+                    if (containerId === 'header-container') {
+                        initHeader();
+                    }
+                    if (containerId === 'footer-container') {
+                        initFooter();
+                    }
+                })
+                .catch(error => console.error('Erreur lors du chargement:', error));
+        }
+    </script>
+</body>
+</html>

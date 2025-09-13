@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plan d'accès - Comment venir - Clinique Alirfane Tanger">
+    <title>Plan d'Accès - Clinique Alirfane Tanger</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .acces-hero {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 100px 0 60px;
+            color: white;
+            text-align: center;
+        }
+        
+        .map-container {
+            height: 500px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        }
+        
+        .map-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        
+        .map-button {
+            display: block;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+        
+        .map-button:hover {
+            background: #f0f0f0;
+        }
+        
+        .map-button:last-child {
+            margin-bottom: 0;
+        }
+        
+        .transport-section {
+            padding: 60px 0;
+        }
+        
+        .transport-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .transport-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .transport-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .transport-header {
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            text-align: center;
+        }
+        
+        .transport-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+        
+        .transport-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .transport-time {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .transport-details {
+            padding: 25px;
+        }
+        
+        .transport-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .transport-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-number {
+            width: 25px;
+            height: 25px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .directions-section {
+            background: #f8f9fa;
+            padding: 60px 0;
+        }
+        
+        .direction-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .direction-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .direction-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .direction-from {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .direction-info {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .parking-section {
+            padding: 60px 0;
+        }
+        
+        .parking-info {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+        
+        .parking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .parking-item {
+            text-align: center;
+        }
+        
+        .parking-icon {
+            width: 60px;
+            height: 60px;
+            background: #e8f5e9;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+        
+        .parking-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .parking-value {
+            color: #4caf50;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .landmarks-section {
+            background: linear-gradient(135deg, #fff5f5, #ffeaa7);
+            padding: 60px 0;
+        }
+        
+        .landmarks-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .landmark-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        .landmark-icon {
+            width: 40px;
+            height: 40px;
+            background: #f39c12;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .landmark-info {
+            flex: 1;
+        }
+        
+        .landmark-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 3px;
+        }
+        
+        .landmark-distance {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .gps-coordinates {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+        
+        .coordinates-display {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .coordinate-item {
+            padding: 15px 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .coordinate-label {
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .coordinate-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .transport-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .coordinates-display {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+    
+    <!-- Contenu Principal -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="acces-hero">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 20px;">Plan d'Accès</h1>
+                <p style="font-size: 1.25rem; opacity: 0.95;">Comment venir à la Clinique Alirfane</p>
+            </div>
+        </section>
+        
+        <!-- Carte Interactive -->
+        <section class="container" style="padding: 60px 20px;">
+            <h2 style="text-align: center; color: #333; margin-bottom: 40px;">Localisation</h2>
+            
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <div style="text-align: center;">
+                        <div style="font-size: 80px; margin-bottom: 20px;">🗺️</div>
+                        <h3 style="color: #333;">Carte Interactive</h3>
+                        <p style="color: #666;">Clinique Alirfane - Quartier Mesnana, Tanger</p>
+                    </div>
+                </div>
+                
+                <div class="map-controls">
+                    <button class="map-button" title="Zoom avant">+</button>
+                    <button class="map-button" title="Zoom arrière">−</button>
+                    <button class="map-button" title="Plein écran">⛶</button>
+                    <button class="map-button" title="Ma position">📍</button>
+                </div>
+            </div>
+            
+            <!-- Coordonnées GPS -->
+            <div class="gps-coordinates">
+                <h3 style="color: #333; margin-bottom: 20px;">📍 Coordonnées GPS</h3>
+                <div class="coordinates-display">
+                    <div class="coordinate-item">
+                        <div class="coordinate-label">Latitude</div>
+                        <div class="coordinate-value">35.7595° N</div>
+                    </div>
+                    <div class="coordinate-item">
+                        <div class="coordinate-label">Longitude</div>
+                        <div class="coordinate-value">5.8340° W</div>
+                    </div>
+                </div>
+                <button onclick="copyGPS()" style="background: #667eea; color: white; padding: 10px 30px; border: none; border-radius: 25px; cursor: pointer; font-weight: 600;">
+                    📋 Copier les coordonnées
+                </button>
+            </div>
+        </section>
+        
+        <!-- Moyens de Transport -->
+        <section class="transport-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 50px;">Comment Venir ?</h2>
+                
+                <div class="transport-grid">
+                    <!-- En Voiture -->
+                    <div class="transport-card">
+                        <div class="transport-header">
+                            <div class="transport-icon">🚗</div>
+                            <h3 class="transport-title">En Voiture</h3>
+                            <p class="transport-time">Parking gratuit disponible</p>
+                        </div>
+                        <div class="transport-details">
+                            <div class="transport-step">
+                                <span class="step-number">1</span>
+                                <span class="step-content">Depuis l'autoroute A1, prendre la sortie Tanger Centre</span>
+                            </div>
+                            <div class="transport-step">
+                                <span class="step-number">2</span>
+                                <span class="step-content">Suivre Avenue Mohammed VI direction Mesnana</span>
+                            </div>
+                            <div class="transport-step">
+                                <span class="step-number">3</span>
+                                <span class="step-content">Au rond-point, prendre la 2ème sortie</span>
+                            </div>
+                            <div class="transport-step">
+                                <span class="step-number">4</span>
+                                <span class="step-content">La clinique se trouve sur votre droite après 500m</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- En Taxi -->
+                    <div class="transport-card">
+                        <div class="transport-header">
+                            <div class="transport-icon">🚕</div>
+                            <h3 class="transport-title">En Taxi</h3>
+                            <p class="transport-time">~20 DH depuis le centre-ville</p>
+                        </div>
+                        <div class="transport-details">
+                            <div class="transport-step">
+                                <span class="step-number">1</span>
+                                <span class="step-content">Demandez "Clinique Alirfane à Mesnana"</span>
+                            </div>
+                            <div class="transport-step">
+                                <span class="step-number">2</span>
+                                <span class="step-content">Tarif indicatif : 15-25 DH depuis le centre</span>
+                            </div>
+                            <div class="transport-step">
+                                <span class="step-number">3</span>
+                                <span class="step-content">Station de taxi à proximité pour le retour</span>
+                            </div>
+                            <div class="transport-step">
+                                <span class="step-number">📞</span>
+                                <span class="step-content">Réservation taxi : 05 39 94 00 00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- En Bus -->
+                    <div class="transport-card">
+                        <div class="transport-header">
+                            <div class="transport-icon">🚌</div>
+                            <h3 class="transport-title">En Bus</h3>
+                            <p class="transport-time">Lignes 15, 20, 35</p>
+                        </div>
+                        <div class="transport-details">
+                            <div class="transport-step">
+                                <span class="step-number">15</span>
+                                <span class="step-content">Ligne 15 : Arrêt "Clinique Alirfane" - Direct</span>
+                            </div>
+                            <div class="transport-step">
+                                <span class="step-number">20</span>
+                                <span class="step-content">Ligne 20 : Arrêt "Mesnana Centre" - 5 min à pied</span>
+                            </div>
+                            <div class="transport-step">
+                                <span class="step-number">35</span>
+                                <span class="step-content">Ligne 35 : Arrêt "Avenue Mohammed VI" - 8 min à pied</span>
+                            </div>
+                            <div class="transport-step">
+                                <span class="step-number">💳</span>
+                                <span class="step-content">Tarif : 3.50 DH par trajet</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Directions depuis différents points -->
+        <section class="directions-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 50px;">Itinéraires Principaux</h2>
+                
+                <div class="direction-cards">
+                    <div class="direction-card">
+                        <div class="direction-icon">✈️</div>
+                        <div class="direction-from">Depuis l'Aéroport</div>
+                        <div class="direction-info">
+                            Distance : 15 km<br>
+                            Durée : 20 minutes<br>
+                            Taxi : ~150 DH
+                        </div>
+                    </div>
+                    
+                    <div class="direction-card">
+                        <div class="direction-icon">🚂</div>
+                        <div class="direction-from">Depuis la Gare</div>
+                        <div class="direction-info">
+                            Distance : 8 km<br>
+                            Durée : 15 minutes<br>
+                            Taxi : ~80 DH
+                        </div>
+                    </div>
+                    
+                    <div class="direction-card">
+                        <div class="direction-icon">⚓</div>
+                        <div class="direction-from">Depuis le Port</div>
+                        <div class="direction-info">
+                            Distance : 6 km<br>
+                            Durée : 10 minutes<br>
+                            Taxi : ~60 DH
+                        </div>
+                    </div>
+                    
+                    <div class="direction-card">
+                        <div class="direction-icon">🏛️</div>
+                        <div class="direction-from">Depuis Centre-Ville</div>
+                        <div class="direction-info">
+                            Distance : 4 km<br>
+                            Durée : 8 minutes<br>
+                            Taxi : ~40 DH
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Parking -->
+        <section class="parking-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 50px;">Parking</h2>
+                
+                <div class="parking-info">
+                    <div class="parking-grid">
+                        <div class="parking-item">
+                            <div class="parking-icon">🅿️</div>
+                            <div class="parking-label">Places Disponibles</div>
+                            <div class="parking-value">200+</div>
+                        </div>
+                        
+                        <div class="parking-item">
+                            <div class="parking-icon">♿</div>
+                            <div class="parking-label">Places PMR</div>
+                            <div class="parking-value">10</div>
+                        </div>
+                        
+                        <div class="parking-item">
+                            <div class="parking-icon">💰</div>
+                            <div class="parking-label">Tarif</div>
+                            <div class="parking-value">Gratuit</div>
+                        </div>
+                        
+                        <div class="parking-item">
+                            <div class="parking-icon">🔒</div>
+                            <div class="parking-label">Sécurité</div>
+                            <div class="parking-value">24h/24</div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #e8f5e9; padding: 20px; border-radius: 10px; margin-top: 30px;">
+                        <p style="color: #4caf50; margin: 0;">
+                            <strong>✓ Parking gratuit pour tous les patients et visiteurs</strong><br>
+                            Surveillé 24h/24 avec système de vidéosurveillance
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Points de Repère -->
+        <section class="landmarks-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 50px;">Points de Repère Proches</h2>
+                
+                <div class="landmarks-list">
+                    <div class="landmark-item">
+                        <div class="landmark-icon">🏢</div>
+                        <div class="landmark-info">
+                            <div class="landmark-name">Centre Commercial Marjane</div>
+                            <div class="landmark-distance">À 2 km</div>
+                        </div>
+                    </div>
+                    
+                    <div class="landmark-item">
+                        <div class="landmark-icon">🕌</div>
+                        <div class="landmark-info">
+                            <div class="landmark-name">Mosquée Mohammed VI</div>
+                            <div class="landmark-distance">À 1.5 km</div>
+                        </div>
+                    </div>
+                    
+                    <div class="landmark-item">
+                        <div class="landmark-icon">🏛️</div>
+                        <div class="landmark-info">
+                            <div class="landmark-name">Palais de Justice</div>
+                            <div class="landmark-distance">À 3 km</div>
+                        </div>
+                    </div>
+                    
+                    <div class="landmark-item">
+                        <div class="landmark-icon">🏫</div>
+                        <div class="landmark-info">
+                            <div class="landmark-name">Université Abdelmalek Essaâdi</div>
+                            <div class="landmark-distance">À 4 km</div>
+                        </div>
+                    </div>
+                    
+                    <div class="landmark-item">
+                        <div class="landmark-icon">⛽</div>
+                        <div class="landmark-info">
+                            <div class="landmark-name">Station Shell Mesnana</div>
+                            <div class="landmark-distance">À 500 m</div>
+                        </div>
+                    </div>
+                    
+                    <div class="landmark-item">
+                        <div class="landmark-icon">🏦</div>
+                        <div class="landmark-info">
+                            <div class="landmark-name">Banque Populaire</div>
+                            <div class="landmark-distance">À 800 m</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section style="background: linear-gradient(135deg, #667eea, #764ba2); padding: 60px 0;">
+            <div class="container" style="text-align: center;">
+                <h2 style="color: white; margin-bottom: 20px;">Besoin d'Aide pour Venir ?</h2>
+                <p style="color: white; font-size: 1.1rem; margin-bottom: 30px;">
+                    Notre équipe peut vous guider par téléphone
+                </p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="tel:0539123456" class="btn btn-primary" style="background: white; color: #667eea; padding: 15px 40px; font-size: 18px;">
+                        📞 Nous Appeler
+                    </a>
+                    <button onclick="openNavigation()" class="btn btn-secondary" style="background: transparent; color: white; border: 2px solid white; padding: 15px 40px; cursor: pointer;">
+                        🧭 Lancer la Navigation
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <div id="footer-container"></div>
+    
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
+    <script>
+        // Charger le header et le footer
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                if (typeof initHeader === 'function') {
+                    setTimeout(initHeader, 100);
+                }
+            });
+            
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+                if (typeof initFooter === 'function') {
+                    setTimeout(initFooter, 100);
+                }
+            });
+        
+        // Copier les coordonnées GPS
+        function copyGPS() {
+            const coords = "35.7595, -5.8340";
+            navigator.clipboard.writeText(coords).then(() => {
+                alert('Coordonnées GPS copiées : ' + coords);
+            });
+        }
+        
+        // Ouvrir la navigation
+        function openNavigation() {
+            const address = "Clinique Alirfane, Mesnana, Tanger, Maroc";
+            const encodedAddress = encodeURIComponent(address);
+            
+            // Détecter si mobile
+            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                // Ouvrir dans l'app de navigation
+                window.location.href = `geo:35.7595,-5.8340?q=${encodedAddress}`;
+            } else {
+                // Ouvrir dans Google Maps
+                window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
+            }
+        }
+        
+        // Animation des cartes au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observer les cartes
+        document.querySelectorAll('.transport-card, .direction-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.5s ease';
+            observer.observe(card);
+        });
+        
+        // Simulation des contrôles de la carte
+        document.querySelectorAll('.map-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const action = this.textContent;
+                console.log('Action carte:', action);
+                // Ici vous pouvez intégrer avec une vraie API de carte
+            });
+        });
+    </script>
+</body>
+</html>

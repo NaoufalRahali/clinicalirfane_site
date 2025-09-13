@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Présentation - Clinique Alirfane Tanger">
+    <title>Présentation - Clinique Alirfane Tanger</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .presentation-hero {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 100px 0 60px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.1) 35px, rgba(255,255,255,.1) 70px);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stats-banner {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: -60px auto 60px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .intro-section {
+            padding: 80px 0;
+        }
+        
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .intro-content h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .intro-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .intro-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .intro-image-placeholder {
+            height: 400px;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+        }
+        
+        .mission-vision {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .mv-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .mv-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .mv-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .mv-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            margin-bottom: 25px;
+        }
+        
+        .mv-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .mv-text {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .pillars-section {
+            padding: 80px 0;
+        }
+        
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .pillar-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .pillar-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+        
+        .pillar-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .pillar-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .infrastructure-section {
+            background: linear-gradient(135deg, #fff5f5, #ffeaa7);
+            padding: 80px 0;
+        }
+        
+        .infra-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .infra-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .infra-icon {
+            width: 50px;
+            height: 50px;
+            background: #f39c12;
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .infra-content {
+            flex: 1;
+        }
+        
+        .infra-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .infra-detail {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .team-section {
+            padding: 80px 0;
+        }
+        
+        .team-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        
+        .team-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .team-stat {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .team-stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .team-stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .certifications {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .cert-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .cert-logo {
+            width: 150px;
+            height: 100px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .cert-logo:hover {
+            transform: scale(1.1);
+        }
+        
+        .partners-section {
+            padding: 80px 0;
+        }
+        
+        .partners-carousel {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        
+        .partner-card {
+            min-width: 200px;
+            height: 120px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-white {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            padding: 15px 40px;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pillars-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+    
+    <!-- Contenu Principal -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="presentation-hero">
+            <div class="hero-pattern"></div>
+            <div class="container hero-content">
+                <h1 style="font-size: 3rem; margin-bottom: 20px;">Clinique Alirfane</h1>
+                <p style="font-size: 1.5rem; opacity: 0.95; max-width: 700px; margin: 0 auto;">
+                    Excellence médicale et innovation au service de votre santé depuis 1995
+                </p>
+            </div>
+        </section>
+        
+        <!-- Statistiques -->
+        <section class="container">
+            <div class="stats-banner">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">29</div>
+                        <div class="stat-label">Années d'excellence</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Médecins spécialistes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">200</div>
+                        <div class="stat-label">Lits d'hospitalisation</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Patients par an</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Service d'urgence</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Introduction -->
+        <section class="intro-section">
+            <div class="container">
+                <div class="intro-grid">
+                    <div class="intro-content">
+                        <h2>Bienvenue à la Clinique Alirfane</h2>
+                        <p>
+                            Située au cœur de Tanger, la Clinique Alirfane est un établissement de santé de référence 
+                            qui combine expertise médicale, technologies de pointe et approche humaine des soins. 
+                            Depuis près de trois décennies, nous nous engageons à offrir des soins de qualité exceptionnelle 
+                            à nos patients.
+                        </p>
+                        <p>
+                            Notre équipe multidisciplinaire de professionnels de santé hautement qualifiés travaille 
+                            en synergie pour garantir une prise en charge complète et personnalisée. Nous croyons que 
+                            chaque patient mérite une attention particulière et des soins adaptés à ses besoins spécifiques.
+                        </p>
+                        <p>
+                            Dotée d'équipements médicaux de dernière génération et d'infrastructures modernes, 
+                            notre clinique offre un environnement de soins optimal où sécurité, confort et efficacité 
+                            sont nos priorités absolues.
+                        </p>
+                    </div>
+                    <div class="intro-image">
+                        <div class="intro-image-placeholder">🏥</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Mission et Vision -->
+        <section class="mission-vision">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Notre Mission & Vision</h2>
+                <p style="text-align: center; color: #666; max-width: 700px; margin: 0 auto;">
+                    Guidés par nos valeurs et notre engagement envers l'excellence
+                </p>
+                
+                <div class="mv-cards">
+                    <div class="mv-card">
+                        <div class="mv-icon">🎯</div>
+                        <div class="mv-title">Notre Mission</div>
+                        <div class="mv-text">
+                            Fournir des soins médicaux de haute qualité, accessibles et personnalisés, 
+                            en plaçant le patient au centre de toutes nos préoccupations. Nous nous 
+                            engageons à améliorer continuellement nos services pour répondre aux besoins 
+                            évolutifs de notre communauté.
+                        </div>
+                    </div>
+                    
+                    <div class="mv-card">
+                        <div class="mv-icon">👁️</div>
+                        <div class="mv-title">Notre Vision</div>
+                        <div class="mv-text">
+                            Être reconnu comme le leader régional en matière de soins de santé, 
+                            en établissant de nouveaux standards d'excellence médicale. Nous aspirons 
+                            à être un modèle d'innovation, de compassion et d'efficacité dans le 
+                            secteur de la santé au Maroc.
+                        </div>
+                    </div>
+                    
+                    <div class="mv-card">
+                        <div class="mv-icon">💝</div>
+                        <div class="mv-title">Nos Valeurs</div>
+                        <div class="mv-text">
+                            Intégrité, compassion, excellence et innovation guident chacune de nos actions. 
+                            Nous croyons en la dignité de chaque patient, l'importance du travail d'équipe, 
+                            et l'engagement envers l'amélioration continue de nos pratiques médicales.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Piliers d'excellence -->
+        <section class="pillars-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Nos Piliers d'Excellence</h2>
+                <p style="text-align: center; color: #666; max-width: 700px; margin: 0 auto;">
+                    Quatre fondements essentiels qui définissent notre approche des soins
+                </p>
+                
+                <div class="pillars-grid">
+                    <div class="pillar-card">
+                        <div class="pillar-icon">👨‍⚕️</div>
+                        <div class="pillar-title">Expertise Médicale</div>
+                        <div class="pillar-desc">
+                            Équipe de spécialistes reconnus dans leurs domaines respectifs
+                        </div>
+                    </div>
+                    
+                    <div class="pillar-card">
+                        <div class="pillar-icon">🔬</div>
+                        <div class="pillar-title">Technologie Avancée</div>
+                        <div class="pillar-desc">
+                            Équipements de dernière génération pour des diagnostics précis
+                        </div>
+                    </div>
+                    
+                    <div class="pillar-card">
+                        <div class="pillar-icon">❤️</div>
+                        <div class="pillar-title">Soins Humanisés</div>
+                        <div class="pillar-desc">
+                            Approche empathique et personnalisée pour chaque patient
+                        </div>
+                    </div>
+                    
+                    <div class="pillar-card">
+                        <div class="pillar-icon">✨</div>
+                        <div class="pillar-title">Innovation Continue</div>
+                        <div class="pillar-desc">
+                            Adoption des dernières avancées en médecine et gestion hospitalière
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Infrastructure -->
+        <section class="infrastructure-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Infrastructure Moderne</h2>
+                <p style="text-align: center; color: #666; max-width: 700px; margin: 0 auto;">
+                    Des installations conçues pour votre confort et votre sécurité
+                </p>
+                
+                <div class="infra-features">
+                    <div class="infra-item">
+                        <div class="infra-icon">🏥</div>
+                        <div class="infra-content">
+                            <div class="infra-title">20 000 m²</div>
+                            <div class="infra-detail">Surface totale dédiée aux soins</div>
+                        </div>
+                    </div>
+                    
+                    <div class="infra-item">
+                        <div class="infra-icon">🛏️</div>
+                        <div class="infra-content">
+                            <div class="infra-title">200 Chambres</div>
+                            <div class="infra-detail">Individuelles et doubles tout confort</div>
+                        </div>
+                    </div>
+                    
+                    <div class="infra-item">
+                        <div class="infra-icon">⚕️</div>
+                        <div class="infra-content">
+                            <div class="infra-title">12 Blocs Opératoires</div>
+                            <div class="infra-detail">Équipés selon les normes internationales</div>
+                        </div>
+                    </div>
+                    
+                    <div class="infra-item">
+                        <div class="infra-icon">🚑</div>
+                        <div class="infra-content">
+                            <div class="infra-title">Service d'Urgence</div>
+                            <div class="infra-detail">Opérationnel 24h/24, 7j/7</div>
+                        </div>
+                    </div>
+                    
+                    <div class="infra-item">
+                        <div class="infra-icon">🔬</div>
+                        <div class="infra-content">
+                            <div class="infra-title">Laboratoires</div>
+                            <div class="infra-detail">Analyses complètes sur place</div>
+                        </div>
+                    </div>
+                    
+                    <div class="infra-item">
+                        <div class="infra-icon">📷</div>
+                        <div class="infra-content">
+                            <div class="infra-title">Centre d'Imagerie</div>
+                            <div class="infra-detail">IRM, Scanner, Radio numérique</div>
+                        </div>
+                    </div>
+                    
+                    <div class="infra-item">
+                        <div class="infra-icon">💊</div>
+                        <div class="infra-content">
+                            <div class="infra-title">Pharmacie 24h</div>
+                            <div class="infra-detail">Service continu pour les patients</div>
+                        </div>
+                    </div>
+                    
+                    <div class="infra-item">
+                        <div class="infra-icon">🅿️</div>
+                        <div class="infra-content">
+                            <div class="infra-title">Parking Gratuit</div>
+                            <div class="infra-detail">200+ places sécurisées</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Équipe -->
+        <section class="team-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Notre Équipe</h2>
+                <div class="team-intro">
+                    <p style="color: #666; line-height: 1.8;">
+                        La force de notre clinique réside dans son équipe exceptionnelle de professionnels 
+                        de santé. Médecins, infirmiers, techniciens et personnel administratif travaillent 
+                        ensemble avec dévouement pour assurer votre bien-être.
+                    </p>
+                </div>
+                
+                <div class="team-stats">
+                    <div class="team-stat">
+                        <div class="team-stat-number">150+</div>
+                        <div class="team-stat-label">Médecins Spécialistes</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-number">300+</div>
+                        <div class="team-stat-label">Infirmiers Qualifiés</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-number">100+</div>
+                        <div class="team-stat-label">Techniciens Spécialisés</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-number">50+</div>
+                        <div class="team-stat-label">Personnel Support</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Certifications -->
+        <section class="certifications">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Certifications & Accréditations</h2>
+                <p style="text-align: center; color: #666; max-width: 700px; margin: 0 auto;">
+                    Reconnus par les plus hautes instances nationales et internationales
+                </p>
+                
+                <div class="cert-logos">
+                    <div class="cert-logo">
+                        <span style="font-size: 14px; color: #666;">ISO 9001:2015</span>
+                    </div>
+                    <div class="cert-logo">
+                        <span style="font-size: 14px; color: #666;">JCI Accredited</span>
+                    </div>
+                    <div class="cert-logo">
+                        <span style="font-size: 14px; color: #666;">Ministère de la Santé</span>
+                    </div>
+                    <div class="cert-logo">
+                        <span style="font-size: 14px; color: #666;">CNOPS Agréé</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Partenaires -->
+        <section class="partners-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Nos Partenaires</h2>
+                <p style="text-align: center; color: #666; max-width: 700px; margin: 0 auto;">
+                    Collaborations stratégiques pour une meilleure prise en charge
+                </p>
+                
+                <div class="partners-carousel">
+                    <div class="partner-card">
+                        <span style="color: #666;">Assurance Maladie</span>
+                    </div>
+                    <div class="partner-card">
+                        <span style="color: #666;">CNSS</span>
+                    </div>
+                    <div class="partner-card">
+                        <span style="color: #666;">CNOPS</span>
+                    </div>
+                    <div class="partner-card">
+                        <span style="color: #666;">AXA Assurance</span>
+                    </div>
+                    <div class="partner-card">
+                        <span style="color: #666;">Saham Assurance</span>
+                    </div>
+                    <div class="partner-card">
+                        <span style="color: #666;">Atlanta</span>
+                    </div>
+                    <div class="partner-card">
+                        <span style="color: #666;">RMA Watanya</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <h2 style="font-size: 36px; margin-bottom: 20px;">Découvrez l'Excellence en Santé</h2>
+                <p style="font-size: 18px; opacity: 0.95; max-width: 600px; margin: 0 auto 30px;">
+                    Rejoignez les milliers de patients qui nous font confiance pour leurs soins de santé
+                </p>
+                <div class="cta-buttons">
+                    <a href="../medecins/rendez-vous.html" class="btn-white">
+                        Prendre Rendez-vous
+                    </a>
+                    <a href="../services/index.html" class="btn-outline">
+                        Découvrir nos Services
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <div id="footer-container"></div>
+    
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
+    <script>
+        // Charger le header et le footer
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                if (typeof initHeader === 'function') {
+                    setTimeout(initHeader, 100);
+                }
+            });
+            
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+                if (typeof initFooter === 'function') {
+                    setTimeout(initFooter, 100);
+                }
+            });
+        
+        // Animation des nombres au scroll
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.stat-number');
+            
+            numbers.forEach(num => {
+                const finalValue = num.textContent;
+                const hasPlus = finalValue.includes('+');
+                const hasK = finalValue.includes('K');
+                const isTime = finalValue.includes('/');
+                
+                if (!isTime && !num.classList.contains('animated')) {
+                    num.classList.add('animated');
+                    let value = parseInt(finalValue.replace(/\D/g, ''));
+                    let current = 0;
+                    let increment = value / 50;
+                    
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= value) {
+                            current = value;
+                            clearInterval(timer);
+                            
+                            let display = current;
+                            if (hasK) display = (current/1000).toFixed(0) + 'K';
+                            if (hasPlus) display += '+';
+                            num.textContent = display;
+                        } else {
+                            let display = Math.floor(current);
+                            if (hasK) display = (current/1000).toFixed(0) + 'K';
+                            num.textContent = display;
+                        }
+                    }, 30);
+                }
+            });
+        }
+        
+        // Observer pour déclencher l'animation
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('stats-banner')) {
+                        animateNumbers();
+                    }
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observer les éléments
+        document.querySelectorAll('.stats-banner, .mv-card, .pillar-card, .infra-item, .team-stat').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // Carousel automatique pour les partenaires
+        const carousel = document.querySelector('.partners-carousel');
+        let scrollAmount = 0;
+        
+        function autoScroll() {
+            scrollAmount += 1;
+            if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth) {
+                scrollAmount = 0;
+            }
+            carousel.scrollLeft = scrollAmount;
+        }
+        
+        setInterval(autoScroll, 30);
+    </script>
+</body>
+</html>

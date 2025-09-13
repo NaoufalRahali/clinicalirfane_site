@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Clinique Alirfane Tanger - Excellence médicale au cœur de Tanger">
+    <meta name="keywords" content="clinique, santé, médecine, Tanger, Maroc, Alirfane">
+    <meta name="author" content="Clinique Alirfane">
+    
+    <title>Clinique Alirfane Tanger - Accueil</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital@1&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Container pour le Header -->
+    <div id="header-container"></div>
+    
+    <!-- Contenu Principal -->
+    <main class="main-content">
+        <section class="hero-section">
+            <div class="container">
+                <h1>Bienvenue à la Clinique Alirfane</h1>
+                <p class="lead">Excellence médicale et innovation au service de votre santé à Tanger</p>
+                <div class="hero-buttons">
+                    <a href="/clinicalirfane_site/rendez-vous/" class="btn btn-primary">Prendre rendez-vous</a>
+                    <a href="/urgences" class="btn btn-secondary">Urgences 24h/24</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-section">
+            <div class="container">
+                <h2>Nos Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🏥</div>
+                        <h3>Urgences</h3>
+                        <p>Service d'urgence disponible 24h/24 et 7j/7</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">👨‍⚕️</div>
+                        <h3>Consultations</h3>
+                        <p>Médecins spécialistes qualifiés</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔬</div>
+                        <h3>Laboratoire</h3>
+                        <p>Analyses médicales complètes</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🏨</div>
+                        <h3>Hospitalisation</h3>
+                        <p>Chambres modernes et confortables</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>À propos de la Clinique Alirfane</h2>
+                        <p>Située au cœur de Tanger, la Clinique Alirfane représente l'excellence médicale au service de la communauté depuis plus de 20 ans.</p>
+                        <p>Notre équipe de professionnels de santé hautement qualifiés s'engage à fournir des soins de qualité supérieure dans un environnement moderne et accueillant.</p>
+                        <a href="/clinicalirfane_site/a-propos/" class="btn btn-outline">En savoir plus</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="images/clinique-facade.jpg" alt="Clinique Alirfane Tanger">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Container pour le Footer -->
+    <div id="footer-container"></div>
+    
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+    
+    <!-- Script pour charger les composants -->
+    <script>
+        // Fonction pour charger les composants HTML
+        function loadComponent(url, containerId) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(containerId).innerHTML = data;
+                    // Réexécuter les scripts après le chargement
+                    if (containerId === 'header-container') {
+                        initHeader();
+                    }
+                    if (containerId === 'footer-container') {
+                        initFooter();
+                    }
+                })
+                .catch(error => console.error('Erreur lors du chargement:', error));
+        }
+        
+        // Charger le header et le footer au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('components/header.html', 'header-container');
+            loadComponent('components/footer.html', 'footer-container');
+        });
+    </script>
+</body>
+</html>

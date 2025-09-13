@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Actualités - Clinique Alirfane Tanger">
+    <title>Actualités & Événements - Clinique Alirfane Tanger</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .actualites-hero {
+            background: linear-gradient(135deg, #f59e0b, #dc2626);
+            padding: 100px 0 60px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+        }
+        
+        .hero-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+        
+        @keyframes slide {
+            0% { transform: translate(-50%, -50%); }
+            100% { transform: translate(0, 0); }
+        }
+        
+        .news-filters {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: -40px auto 60px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background: #f3f4f6;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover {
+            background: #e5e7eb;
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, #f59e0b, #dc2626);
+            color: white;
+        }
+        
+        .featured-news {
+            padding: 80px 0;
+        }
+        
+        .featured-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .featured-image {
+            height: 400px;
+            background: linear-gradient(135deg, #f59e0b, #dc2626);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 100px;
+            color: white;
+        }
+        
+        .featured-content {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .news-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #fef3c7;
+            color: #d97706;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        
+        .featured-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .featured-excerpt {
+            color: #6b7280;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .news-meta {
+            display: flex;
+            gap: 20px;
+            color: #9ca3af;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #f59e0b;
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+        
+        .read-more:hover {
+            gap: 15px;
+        }
+        
+        .news-grid-section {
+            background: #f9fafb;
+            padding: 80px 0;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .news-image {
+            height: 200px;
+            background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: #9ca3af;
+        }
+        
+        .news-body {
+            padding: 30px;
+        }
+        
+        .news-category {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e0f2fe;
+            color: #0369a1;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        
+        .news-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .news-excerpt {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid #f3f4f6;
+        }
+        
+        .news-date {
+            color: #9ca3af;
+            font-size: 13px;
+        }
+        
+        .news-link {
+            color: #f59e0b;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .events-section {
+            padding: 80px 0;
+        }
+        
+        .events-timeline {
+            max-width: 900px;
+            margin: 50px auto 0;
+        }
+        
+        .event-month {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .event-card {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 30px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+        
+        .event-date-box {
+            background: linear-gradient(135deg, #f59e0b, #dc2626);
+            color: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            height: fit-content;
+        }
+        
+        .event-day {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .event-month-short {
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+        
+        .event-content {
+            flex: 1;
+        }
+        
+        .event-type {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fef3c7;
+            color: #d97706;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        
+        .event-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+        
+        .event-details {
+            display: flex;
+            gap: 20px;
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .event-description {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        .newsletter-section {
+            background: linear-gradient(135deg, #f59e0b, #dc2626);
+            padding: 80px 0;
+        }
+        
+        .newsletter-card {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .newsletter-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 15px;
+        }
+        
+        .newsletter-text {
+            color: #6b7280;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 25px;
+            font-size: 14px;
+        }
+        
+        .newsletter-btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #f59e0b, #dc2626);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .newsletter-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .press-section {
+            background: #f9fafb;
+            padding: 80px 0;
+        }
+        
+        .press-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .press-logo {
+            width: 150px;
+            height: 80px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #9ca3af;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .press-logo:hover {
+            transform: scale(1.1);
+        }
+        
+        .load-more {
+            display: block;
+            margin: 50px auto 0;
+            padding: 15px 40px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 30px;
+            font-weight: 600;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .load-more:hover {
+            border-color: #f59e0b;
+            color: #f59e0b;
+        }
+        
+        @media (max-width: 768px) {
+            .featured-card {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-content {
+                padding: 30px;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .event-card {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+    
+    <!-- Contenu Principal -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="actualites-hero">
+            <div class="hero-animation"></div>
+            <div class="container" style="position: relative;">
+                <h1 style="font-size: 3rem; margin-bottom: 20px;">Actualités & Événements</h1>
+                <p style="font-size: 1.25rem; opacity: 0.95; max-width: 700px; margin: 0 auto;">
+                    Restez informé des dernières nouvelles de la Clinique Alirfane
+                </p>
+            </div>
+        </section>
+        
+        <!-- Filtres -->
+        <section class="container">
+            <div class="news-filters">
+                <div class="filter-tabs">
+                    <button class="filter-btn active" onclick="filterNews('all')">Tout</button>
+                    <button class="filter-btn" onclick="filterNews('actualites')">Actualités</button>
+                    <button class="filter-btn" onclick="filterNews('evenements')">Événements</button>
+                    <button class="filter-btn" onclick="filterNews('sante')">Conseils Santé</button>
+                    <button class="filter-btn" onclick="filterNews('innovations')">Innovations</button>
+                    <button class="filter-btn" onclick="filterNews('communaute')">Communauté</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Article à la Une -->
+        <section class="featured-news">
+            <div class="container">
+                <div class="featured-card">
+                    <div class="featured-image">📰</div>
+                    <div class="featured-content">
+                        <span class="news-badge">À la Une</span>
+                        <h2 class="featured-title">
+                            Inauguration du Nouveau Centre d'Oncologie
+                        </h2>
+                        <p class="featured-excerpt">
+                            La Clinique Alirfane franchit une nouvelle étape dans la lutte contre le cancer 
+                            avec l'ouverture de son centre d'oncologie ultramoderne. Équipé des dernières 
+                            technologies de radiothérapie et de chimiothérapie, ce centre offre une prise 
+                            en charge complète et personnalisée des patients.
+                        </p>
+                        <div class="news-meta">
+                            <div class="meta-item">
+                                📅 15 Décembre 2024
+                            </div>
+                            <div class="meta-item">
+                                👤 Dr. Mohammed Alirfane
+                            </div>
+                            <div class="meta-item">
+                                ⏱️ 5 min de lecture
+                            </div>
+                        </div>
+                        <a href="#" class="read-more">
+                            Lire l'article complet →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Grille d'actualités -->
+        <section class="news-grid-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #111827; margin-bottom: 20px;">Dernières Actualités</h2>
+                <p style="text-align: center; color: #6b7280; max-width: 700px; margin: 0 auto;">
+                    Découvrez les dernières nouvelles et innovations de notre clinique
+                </p>
+                
+                <div class="news-grid">
+                    <div class="news-card">
+                        <div class="news-image">🤖</div>
+                        <div class="news-body">
+                            <span class="news-category">Innovation</span>
+                            <h3 class="news-title">L'IA au Service du Diagnostic</h3>
+                            <p class="news-excerpt">
+                                Découvrez comment l'intelligence artificielle révolutionne notre approche 
+                                du diagnostic médical avec une précision accrue et des délais réduits.
+                            </p>
+                            <div class="news-footer">
+                                <span class="news-date">10 Décembre 2024</span>
+                                <a href="#" class="news-link">Lire plus →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <div class="news-image">💉</div>
+                        <div class="news-body">
+                            <span class="news-category">Santé</span>
+                            <h3 class="news-title">Campagne de Vaccination Gratuite</h3>
+                            <p class="news-excerpt">
+                                La clinique organise une campagne de vaccination gratuite contre la grippe 
+                                saisonnière pour les personnes âgées et les enfants.
+                            </p>
+                            <div class="news-footer">
+                                <span class="news-date">5 Décembre 2024</span>
+                                <a href="#" class="news-link">Lire plus →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <div class="news-image">🏆</div>
+                        <div class="news-body">
+                            <span class="news-category">Distinction</span>
+                            <h3 class="news-title">Prix d'Excellence 2024</h3>
+                            <p class="news-excerpt">
+                                La Clinique Alirfane reçoit le prix d'excellence en soins hospitaliers 
+                                décerné par le Ministère de la Santé pour la qualité de ses services.
+                            </p>
+                            <div class="news-footer">
+                                <span class="news-date">28 Novembre 2024</span>
+                                <a href="#" class="news-link">Lire plus →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <div class="news-image">👨‍⚕️</div>
+                        <div class="news-body">
+                            <span class="news-category">Équipe</span>
+                            <h3 class="news-title">Nouveaux Spécialistes</h3>
+                            <p class="news-excerpt">
+                                Renforcement de notre équipe médicale avec l'arrivée de trois nouveaux 
+                                spécialistes en neurologie, endocrinologie et rhumatologie.
+                            </p>
+                            <div class="news-footer">
+                                <span class="news-date">20 Novembre 2024</span>
+                                <a href="#" class="news-link">Lire plus →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <div class="news-image">🌱</div>
+                        <div class="news-body">
+                            <span class="news-category">Environnement</span>
+                            <h3 class="news-title">Initiative Éco-Responsable</h3>
+                            <p class="news-excerpt">
+                                Lancement de notre programme de réduction des déchets médicaux et 
+                                d'optimisation énergétique pour un hôpital plus vert.
+                            </p>
+                            <div class="news-footer">
+                                <span class="news-date">15 Novembre 2024</span>
+                                <a href="#" class="news-link">Lire plus →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <div class="news-image">🤝</div>
+                        <div class="news-body">
+                            <span class="news-category">Partenariat</span>
+                            <h3 class="news-title">Collaboration Internationale</h3>
+                            <p class="news-excerpt">
+                                Signature d'un accord de partenariat avec l'Hôpital Universitaire de Lyon 
+                                pour l'échange d'expertise et la formation continue.
+                            </p>
+                            <div class="news-footer">
+                                <span class="news-date">8 Novembre 2024</span>
+                                <a href="#" class="news-link">Lire plus →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="load-more">Charger plus d'articles</button>
+            </div>
+        </section>
+        
+        <!-- Événements à venir -->
+        <section class="events-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #111827; margin-bottom: 20px;">Événements à Venir</h2>
+                <p style="text-align: center; color: #6b7280; max-width: 700px; margin: 0 auto;">
+                    Ne manquez pas nos prochains événements et conférences
+                </p>
+                
+                <div class="events-timeline">
+                    <div class="event-month">Janvier 2025</div>
+                    
+                    <div class="event-card">
+                        <div class="event-date-box">
+                            <div class="event-day">15</div>
+                            <div class="event-month-short">JAN</div>
+                        </div>
+                        <div class="event-content">
+                            <span class="event-type">Conférence</span>
+                            <h3 class="event-title">Journée Mondiale du Diabète</h3>
+                            <div class="event-details">
+                                <span>⏰ 09:00 - 17:00</span>
+                                <span>📍 Auditorium Principal</span>
+                                <span>👥 Entrée Gratuite</span>
+                            </div>
+                            <p class="event-description">
+                                Conférence sur la prévention et la gestion du diabète avec dépistage gratuit 
+                                et consultations nutritionnelles.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-date-box">
+                            <div class="event-day">22</div>
+                            <div class="event-month-short">JAN</div>
+                        </div>
+                        <div class="event-content">
+                            <span class="event-type">Formation</span>
+                            <h3 class="event-title">Atelier Premiers Secours</h3>
+                            <div class="event-details">
+                                <span>⏰ 14:00 - 18:00</span>
+                                <span>📍 Salle de Formation</span>
+                                <span>👥 20 places</span>
+                            </div>
+                            <p class="event-description">
+                                Formation pratique aux gestes de premiers secours ouverte au public. 
+                                Inscription obligatoire.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="event-month" style="margin-top: 40px;">Février 2025</div>
+                    
+                    <div class="event-card">
+                        <div class="event-date-box">
+                            <div class="event-day">04</div>
+                            <div class="event-month-short">FÉV</div>
+                        </div>
+                        <div class="event-content">
+                            <span class="event-type">Campagne</span>
+                            <h3 class="event-title">Journée Mondiale contre le Cancer</h3>
+                            <div class="event-details">
+                                <span>⏰ Toute la journée</span>
+                                <span>📍 Hall Principal</span>
+                                <span>👥 Ouvert à tous</span>
+                            </div>
+                            <p class="event-description">
+                                Sensibilisation, dépistages gratuits et témoignages de patients. 
+                                Stand d'information et consultations préventives.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-date-box">
+                            <div class="event-day">14</div>
+                            <div class="event-month-short">FÉV</div>
+                        </div>
+                        <div class="event-content">
+                            <span class="event-type">Portes Ouvertes</span>
+                            <h3 class="event-title">Visite du Service Maternité</h3>
+                            <div class="event-details">
+                                <span>⏰ 10:00 - 16:00</span>
+                                <span>📍 Service Maternité</span>
+                                <span>👥 Futurs Parents</span>
+                            </div>
+                            <p class="event-description">
+                                Découvrez notre service maternité, rencontrez l'équipe et visitez les installations. 
+                                Sessions d'information sur l'accouchement.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Newsletter -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-card">
+                    <div class="newsletter-icon">📧</div>
+                    <h2 class="newsletter-title">Restez Informé</h2>
+                    <p class="newsletter-text">
+                        Recevez nos dernières actualités, conseils santé et invitations 
+                        aux événements directement dans votre boîte mail.
+                    </p>
+                    <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                        <input type="email" class="newsletter-input" placeholder="Votre email" required>
+                        <button type="submit" class="newsletter-btn">S'abonner</button>
+                    </form>
+                    <p style="font-size: 12px; color: #9ca3af; margin-top: 15px;">
+                        Nous respectons votre vie privée. Désabonnement possible à tout moment.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Revue de Presse -->
+        <section class="press-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #111827; margin-bottom: 20px;">Ils Parlent de Nous</h2>
+                <p style="text-align: center; color: #6b7280; max-width: 700px; margin: 0 auto;">
+                    La Clinique Alirfane dans les médias
+                </p>
+                
+                <div class="press-logos">
+                    <div class="press-logo">Le Matin</div>
+                    <div class="press-logo">L'Économiste</div>
+                    <div class="press-logo">2M TV</div>
+                    <div class="press-logo">Medi1 TV</div>
+                    <div class="press-logo">Hespress</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA -->
+        <section style="background: linear-gradient(135deg, #f59e0b, #dc2626); padding: 80px 0;">
+            <div class="container" style="text-align: center;">
+                <h2 style="color: white; font-size: 36px; margin-bottom: 20px;">
+                    Ne Manquez Aucune Actualité
+                </h2>
+                <p style="color: white; font-size: 18px; opacity: 0.95; max-width: 600px; margin: 0 auto 30px;">
+                    Suivez-nous sur les réseaux sociaux pour rester connecté
+                </p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" class="btn-white" style="background: white; color: #f59e0b; padding: 15px 40px; text-decoration: none; border-radius: 30px; font-weight: 600;">
+                        📘 Facebook
+                    </a>
+                    <a href="#" class="btn-white" style="background: white; color: #f59e0b; padding: 15px 40px; text-decoration: none; border-radius: 30px; font-weight: 600;">
+                        📷 Instagram
+                    </a>
+                    <a href="#" class="btn-white" style="background: white; color: #f59e0b; padding: 15px 40px; text-decoration: none; border-radius: 30px; font-weight: 600;">
+                        🔗 LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <div id="footer-container"></div>
+    
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
+    <script>
+        // Charger le header et le footer
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                if (typeof initHeader === 'function') {
+                    setTimeout(initHeader, 100);
+                }
+            });
+            
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+                if (typeof initFooter === 'function') {
+                    setTimeout(initFooter, 100);
+                }
+            });
+        
+        // Filtrer les actualités
+        function filterNews(category) {
+            // Retirer la classe active de tous les boutons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Ajouter la classe active au bouton cliqué
+            event.target.classList.add('active');
+            
+            // Ici, vous pourriez filtrer les actualités selon la catégorie
+            console.log('Filtrage par:', category);
+            
+            // Animation des cartes
+            const cards = document.querySelectorAll('.news-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.9)';
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                    card.style.transition = 'all 0.3s ease';
+                }, index * 100);
+            });
+        }
+        
+        // S'abonner à la newsletter
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            
+            const email = event.target.querySelector('input[type="email"]').value;
+            const button = event.target.querySelector('button');
+            const originalText = button.textContent;
+            
+            // Animation du bouton
+            button.textContent = 'Inscription...';
+            button.disabled = true;
+            
+            // Simuler l'envoi
+            setTimeout(() => {
+                button.textContent = '✓ Inscrit';
+                button.style.background = '#10b981';
+                
+                // Réinitialiser après 3 secondes
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '';
+                    button.disabled = false;
+                    event.target.reset();
+                }, 3000);
+            }, 1500);
+        }
+        
+        // Charger plus d'articles
+        document.querySelector('.load-more').addEventListener('click', function() {
+            const button = this;
+            const originalText = button.textContent;
+            
+            button.textContent = 'Chargement...';
+            button.disabled = true;
+            
+            // Simuler le chargement
+            setTimeout(() => {
+                // Ici, vous ajouteriez de nouveaux articles
+                button.textContent = 'Aucun article supplémentaire';
+                button.style.opacity = '0.5';
+            }, 1500);
+        });
+        
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observer les éléments
+        document.querySelectorAll('.news-card, .event-card, .press-logo').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // Animation de l'article à la une
+        const featuredCard = document.querySelector('.featured-card');
+        if (featuredCard) {
+            featuredCard.style.opacity = '0';
+            featuredCard.style.transform = 'translateY(30px)';
+            featuredCard.style.transition = 'all 0.8s ease';
+            
+            setTimeout(() => {
+                featuredCard.style.opacity = '1';
+                featuredCard.style.transform = 'translateY(0)';
+            }, 300);
+        }
+    </script>
+</body>
+</html>

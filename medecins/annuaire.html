@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Annuaire des médecins - Clinique Alirfane Tanger">
+    <title>Annuaire des Médecins - Clinique Alirfane Tanger</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .doctors-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 100px 0 60px;
+            color: white;
+            text-align: center;
+        }
+        
+        .filters-section {
+            background: #f8f9fa;
+            padding: 30px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .filters-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .filter-group label {
+            font-size: 12px;
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .filter-group select,
+        .filter-group input {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            min-width: 200px;
+        }
+        
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 60px 0;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .doctor-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .doctor-image .placeholder {
+            font-size: 80px;
+            color: white;
+            opacity: 0.9;
+        }
+        
+        .doctor-specialty-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: white;
+            color: #667eea;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .doctor-info {
+            padding: 25px;
+        }
+        
+        .doctor-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .doctor-title {
+            color: #667eea;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .doctor-details {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .doctor-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-doctor {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-rdv {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-rdv:hover {
+            background: #5a67d8;
+        }
+        
+        .btn-profile {
+            background: transparent;
+            color: #667eea;
+            border: 1px solid #667eea;
+        }
+        
+        .btn-profile:hover {
+            background: #667eea;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+    
+    <!-- Contenu Principal -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="doctors-hero">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 20px;">Notre Équipe Médicale</h1>
+                <p style="font-size: 1.25rem; opacity: 0.95;">Des professionnels de santé dévoués à votre bien-être</p>
+            </div>
+        </section>
+        
+        <!-- Filtres -->
+        <section class="filters-section">
+            <div class="container">
+                <div class="filters-container">
+                    <div class="filter-group">
+                        <label>Rechercher</label>
+                        <input type="text" placeholder="Nom du médecin..." id="searchDoctor">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Spécialité</label>
+                        <select id="filterSpecialty">
+                            <option value="">Toutes les spécialités</option>
+                            <option value="cardiologie">Cardiologie</option>
+                            <option value="ophtalmologie">Ophtalmologie</option>
+                            <option value="algologie">Algologie</option>
+                            <option value="neurologie">Neurologie</option>
+                            <option value="pediatrie">Pédiatrie</option>
+                            <option value="gynecologie">Gynécologie</option>
+                            <option value="dermatologie">Dermatologie</option>
+                            <option value="orthopédie">Orthopédie</option>
+                            <option value="orl">ORL</option>
+                            <option value="gastro">Gastro-entérologie</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Disponibilité</label>
+                        <select id="filterAvailability">
+                            <option value="">Tous</option>
+                            <option value="today">Aujourd'hui</option>
+                            <option value="week">Cette semaine</option>
+                            <option value="month">Ce mois</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Grille des médecins -->
+        <section class="container">
+            <div class="doctors-grid">
+                <!-- Médecin 1 -->
+                <div class="doctor-card" data-specialty="cardiologie">
+                    <div class="doctor-image">
+                        <span class="placeholder">👨‍⚕️</span>
+                        <span class="doctor-specialty-badge">Cardiologie</span>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Ahmed Benali</h3>
+                        <p class="doctor-title">Cardiologue - Chef de service</p>
+                        <div class="doctor-details">
+                            <div class="detail-item">
+                                <span>🎓</span>
+                                <span>20 ans d'expérience</span>
+                            </div>
+                            <div class="detail-item">
+                                <span>🏥</span>
+                                <span>Consultation: Lun-Ven</span>
+                            </div>
+                            <div class="detail-item">
+                                <span>💬</span>
+                                <span>Français, Arabe, Anglais</span>
+                            </div>
+                        </div>
+                        <div class="doctor-actions">
+                            <a href="rendez-vous.html?doctor=1" class="btn-doctor btn-rdv">Prendre RDV</a>
+                            <a href="#" class="btn-doctor btn-profile">Voir profil</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Médecin 2 -->
+                <div class="doctor-card" data-specialty="ophtalmologie">
+                    <div class="doctor-image">
+                        <span class="placeholder">👩‍⚕️</span>
+                        <span class="doctor-specialty-badge">Ophtalmologie</span>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Fatima Alaoui</h3>
+                        <p class="doctor-title">Ophtalmologue - Chirurgie réfractive</p>
+                        <div class="doctor-details">
+                            <div class="detail-item">
+                                <span>🎓</span>
+                                <span>15 ans d'expérience</span>
+                            </div>
+                            <div class="detail-item">
+                                <span>🏥</span>
+                                <span>Consultation: Lun-Sam</span>
+                            </div>
+                            <div class="detail-item">
+                                <span>💬</span>
+                                <span>Français, Arabe, Espagnol</span>
+                            </div>
+                        </div>
+                        <div class="doctor-actions">
+                            <a href="rendez-vous.html?doctor=2" class="btn-doctor btn-rdv">Prendre RDV</a>
+                            <a href="#" class="btn-doctor btn-profile">Voir profil</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Médecin 3 -->
+                <div class="doctor-card" data-specialty="algologie">
+                    <div class="doctor-image">
+                        <span class="placeholder">👨‍⚕️</span>
+                        <span class="doctor-specialty-badge">Algologie</span>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Mohamed Tazi</h3>
+                        <p class="doctor-title">Algologue - Traitement de la douleur</p>
+                        <div class="doctor-details">
+                            <div class="detail-item">
+                                <span>🎓</span>
+                                <span>12 ans d'expérience</span>
+                            </div>
+                            <div class="detail-item">
+                                <span>🏥</span>
+                                <span>Consultation: Mar-Sam</span>
+                            </div>
+                            <div class="detail-item">
+                                <span>💬</span>
+                                <span>Français, Arabe</span>
+                            </div>
+                        </div>
+                        <div class="doctor-actions">
+                            <a href="rendez-vous.html?doctor=3" class="btn-doctor btn-rdv">Prendre RDV</a>
+                            <a href="#" class="btn-doctor btn-profile">Voir profil</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Médecin 4 -->
+                <div class="doctor-card" data-specialty="neurologie">
+                    <div class="doctor-image">
+                        <span class="placeholder">👩‍⚕️</span>
+                        <span class="doctor-specialty-badge">Neurologie</span>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Sarah Benjelloun</h3>
+                        <p class="doctor-title">Neurologue</p>
+                        <div class="doctor-details">
+                            <div class="detail-item">
+                                <span>🎓</span>
+                                <span>18 ans d'expérience</span>
+                            </div>
+                            <div class="detail-item">
+                                <span>🏥</span>
+                                <span>Consultation: Lun-Ven</span>
+                            </div>
+                            <div class="detail-item">
+                                <span>💬</span>
+                                <span>Français, Arabe, Anglais</span>
+                            </div>
+                        </div>
+                        <div class="doctor-actions">
+                            <a href="rendez-vous.html?doctor=4" class="btn-doctor btn-rdv">Prendre RDV</a>
+                            <a href="#" class="btn-doctor btn-profile">Voir profil</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Médecin 5 -->
+                <div class="doctor-card" data-specialty="pediatrie">
+                    <div class="doctor-image">
+                        <span class="placeholder">👨‍⚕️</span>
+                        <span class="doctor-specialty-badge">Pédiatrie</span>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Khalid Mansouri</h3>
+                        <p class="doctor-title">Pédiatre</p>
+                        <div class="doctor-details">
+                            <div class="detail-item">
+                                <span>🎓</span>
+                                <span>10 ans d'expérience</span>
+                            </div>
+                            <div class="detail-item">
+                                <span>🏥</span>
+                                <span>Consultation: Lun-Sam</span>
+                            </div>
+                            <div class="detail-item">
+                                <span>💬</span>
+                                <span>Français, Arabe</span>
+                            </div>
+                        </div>
+                        <div class="doctor-actions">
+                            <a href="rendez-vous.html?doctor=5" class="btn-doctor btn-rdv">Prendre RDV</a>
+                            <a href="#" class="btn-doctor btn-profile">Voir profil</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Médecin 6 -->
+                <div class="doctor-card" data-specialty="gynecologie">
+                    <div class="doctor-image">
+                        <span class="placeholder">👩‍⚕️</span>
+                        <span class="doctor-specialty-badge">Gynécologie</span>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Leila Idrissi</h3>
+                        <p class="doctor-title">Gynécologue-Obstétricienne</p>
+                        <div class="doctor-details">
+                            <div class="detail-item">
+                                <span>🎓</span>
+                                <span>22 ans d'expérience</span>
+                            </div>
+                            <div class="detail-item">
+                                <span>🏥</span>
+                                <span>Consultation: Lun-Ven</span>
+                            </div>
+                            <div class="detail-item">
+                                <span>💬</span>
+                                <span>Français, Arabe, Anglais</span>
+                            </div>
+                        </div>
+                        <div class="doctor-actions">
+                            <a href="rendez-vous.html?doctor=6" class="btn-doctor btn-rdv">Prendre RDV</a>
+                            <a href="#" class="btn-doctor btn-profile">Voir profil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <div id="footer-container"></div>
+    
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
+    <script>
+        // Charger le header et le footer
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                if (typeof initHeader === 'function') {
+                    setTimeout(initHeader, 100);
+                }
+            });
+            
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+                if (typeof initFooter === 'function') {
+                    setTimeout(initFooter, 100);
+                }
+            });
+        
+        // Filtrage des médecins
+        document.getElementById('filterSpecialty').addEventListener('change', function() {
+            const selectedSpecialty = this.value;
+            const cards = document.querySelectorAll('.doctor-card');
+            
+            cards.forEach(card => {
+                if (selectedSpecialty === '' || card.dataset.specialty === selectedSpecialty) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+        
+        // Recherche de médecins
+        document.getElementById('searchDoctor').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const cards = document.querySelectorAll('.doctor-card');
+            
+            cards.forEach(card => {
+                const doctorName = card.querySelector('.doctor-name').textContent.toLowerCase();
+                if (doctorName.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

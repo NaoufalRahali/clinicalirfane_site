@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Services en ligne - Espace Patient - Clinique Alirfane Tanger">
+    <title>Services en Ligne - Clinique Alirfane Tanger</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .services-hero {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 100px 0 60px;
+            color: white;
+            text-align: center;
+        }
+        
+        .online-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 60px 0;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .service-header {
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .service-title {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .service-description {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .service-features {
+            padding: 25px 30px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .feature-check {
+            color: #4caf50;
+            font-size: 18px;
+        }
+        
+        .service-action {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .service-button {
+            width: 100%;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .portal-login {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 40px auto;
+        }
+        
+        .login-form {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .form-group {
+            display: grid;
+            gap: 8px;
+        }
+        
+        .form-group label {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .forgot-password {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .mobile-app-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 80px 0;
+            color: white;
+        }
+        
+        .app-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .app-info h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .app-features {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+        
+        .app-features li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+            font-size: 18px;
+        }
+        
+        .app-stores {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .store-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: white;
+            color: #667eea;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+        
+        .store-button:hover {
+            transform: translateY(-3px);
+        }
+        
+        .app-mockup {
+            text-align: center;
+        }
+        
+        .phone-mockup {
+            width: 300px;
+            height: 600px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        
+        .tutorial-section {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+        
+        .tutorial-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .tutorial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .tutorial-number {
+            width: 50px;
+            height: 50px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0 auto 20px;
+        }
+        
+        .features-comparison {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            margin-top: 30px;
+        }
+        
+        .comparison-table th {
+            background: #f8f9fa;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .check-mark {
+            color: #4caf50;
+            font-size: 20px;
+        }
+        
+        .cross-mark {
+            color: #f44336;
+            font-size: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .online-services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .app-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .app-stores {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+    
+    <!-- Contenu Principal -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="services-hero">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 20px;">Services en Ligne</h1>
+                <p style="font-size: 1.25rem; opacity: 0.95;">Gérez votre santé depuis chez vous, 24h/24</p>
+            </div>
+        </section>
+        
+        <!-- Services en ligne -->
+        <section class="container">
+            <div class="online-services-grid">
+                <!-- Prise de RDV -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">📅</div>
+                        <h3 class="service-title">Prise de Rendez-vous</h3>
+                        <p class="service-description">Réservez vos consultations en quelques clics</p>
+                    </div>
+                    <div class="service-features">
+                        <ul class="feature-list">
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Disponibilités en temps réel</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Choix du médecin et créneaux</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Rappels automatiques SMS/Email</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Modification et annulation faciles</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="service-action">
+                        <button class="service-button" onclick="window.location.href='../medecins/rendez-vous.html'">
+                            Prendre Rendez-vous
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Résultats d'examens -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">📊</div>
+                        <h3 class="service-title">Résultats d'Examens</h3>
+                        <p class="service-description">Consultez vos résultats en toute sécurité</p>
+                    </div>
+                    <div class="service-features">
+                        <ul class="feature-list">
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Accès sécurisé 24h/24</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Historique complet conservé</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Téléchargement PDF</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Partage avec votre médecin</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="service-action">
+                        <button class="service-button" onclick="showLoginPortal()">
+                            Accéder aux Résultats
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Dossier Médical -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">📁</div>
+                        <h3 class="service-title">Dossier Médical</h3>
+                        <p class="service-description">Votre historique médical centralisé</p>
+                    </div>
+                    <div class="service-features">
+                        <ul class="feature-list">
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Consultations passées</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Ordonnances et traitements</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Comptes-rendus médicaux</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Imagerie médicale</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="service-action">
+                        <button class="service-button" onclick="showLoginPortal()">
+                            Mon Dossier Médical
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Téléconsultation -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">💻</div>
+                        <h3 class="service-title">Téléconsultation</h3>
+                        <p class="service-description">Consultez un médecin à distance</p>
+                    </div>
+                    <div class="service-features">
+                        <ul class="feature-list">
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Consultation vidéo sécurisée</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Médecins disponibles 7j/7</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Ordonnance électronique</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Suivi post-consultation</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="service-action">
+                        <button class="service-button">
+                            Démarrer une Téléconsultation
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Paiement en ligne -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">💳</div>
+                        <h3 class="service-title">Paiement en Ligne</h3>
+                        <p class="service-description">Réglez vos factures en toute sécurité</p>
+                    </div>
+                    <div class="service-features">
+                        <ul class="feature-list">
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Paiement 100% sécurisé</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Cartes bancaires acceptées</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Reçu électronique immédiat</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Historique des paiements</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="service-action">
+                        <button class="service-button">
+                            Payer une Facture
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Demande de documents -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">📄</div>
+                        <h3 class="service-title">Documents Administratifs</h3>
+                        <p class="service-description">Demandez vos documents en ligne</p>
+                    </div>
+                    <div class="service-features">
+                        <ul class="feature-list">
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Certificats médicaux</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Attestations d'hospitalisation</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Factures détaillées</span>
+                            </li>
+                            <li class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Envoi par email sécurisé</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="service-action">
+                        <button class="service-button">
+                            Demander un Document
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Portail Patient Login -->
+        <section class="container">
+            <div class="portal-login" id="loginPortal" style="display: none;">
+                <h3 style="text-align: center; color: #333; margin-bottom: 10px;">Connexion Espace Patient</h3>
+                <p style="text-align: center; color: #666; margin-bottom: 30px;">Accédez à tous vos services en ligne</p>
+                
+                <form class="login-form">
+                    <div class="form-group">
+                        <label>Email ou Numéro de Dossier</label>
+                        <input type="text" placeholder="exemple@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Mot de passe</label>
+                        <input type="password" placeholder="••••••••">
+                    </div>
+                    
+                    <div class="login-options">
+                        <label class="remember-me">
+                            <input type="checkbox">
+                            <span>Se souvenir de moi</span>
+                        </label>
+                        <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+                    </div>
+                    
+                    <button type="submit" class="service-button">
+                        Se Connecter
+                    </button>
+                </form>
+                
+                <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e0e0e0;">
+                    <p style="color: #666;">Pas encore de compte ?</p>
+                    <a href="#" style="color: #667eea; text-decoration: none; font-weight: 600;">Créer mon espace patient</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Application Mobile -->
+        <section class="mobile-app-section">
+            <div class="container">
+                <div class="app-content">
+                    <div class="app-info">
+                        <h2>Application Mobile Clinique Alirfane</h2>
+                        <p style="font-size: 18px; opacity: 0.95;">Votre santé dans votre poche</p>
+                        
+                        <ul class="app-features">
+                            <li>
+                                <span>📱</span>
+                                <span>Interface intuitive et moderne</span>
+                            </li>
+                            <li>
+                                <span>🔔</span>
+                                <span>Notifications de rappel</span>
+                            </li>
+                            <li>
+                                <span>🔒</span>
+                                <span>Données sécurisées et cryptées</span>
+                            </li>
+                            <li>
+                                <span>📍</span>
+                                <span>Géolocalisation et itinéraire</span>
+                            </li>
+                            <li>
+                                <span>💬</span>
+                                <span>Chat avec notre équipe</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="app-stores">
+                            <a href="#" class="store-button">
+                                🍎 App Store
+                            </a>
+                            <a href="#" class="store-button">
+                                🤖 Google Play
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="app-mockup">
+                        <div class="phone-mockup">
+                            <span style="font-size: 100px; color: #667eea;">📱</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Tutoriel -->
+        <section class="tutorial-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 50px;">Comment Utiliser nos Services en Ligne ?</h2>
+                
+                <div class="tutorial-cards">
+                    <div class="tutorial-card">
+                        <div class="tutorial-number">1</div>
+                        <h4 style="color: #333; margin-bottom: 15px;">Créez votre compte</h4>
+                        <p style="color: #666; font-size: 14px;">Inscrivez-vous avec votre email et numéro de dossier médical</p>
+                    </div>
+                    
+                    <div class="tutorial-card">
+                        <div class="tutorial-number">2</div>
+                        <h4 style="color: #333; margin-bottom: 15px;">Validez votre identité</h4>
+                        <p style="color: #666; font-size: 14px;">Confirmez votre compte via l'email de vérification</p>
+                    </div>
+                    
+                    <div class="tutorial-card">
+                        <div class="tutorial-number">3</div>
+                        <h4 style="color: #333; margin-bottom: 15px;">Connectez-vous</h4>
+                        <p style="color: #666; font-size: 14px;">Accédez à votre espace personnel sécurisé</p>
+                    </div>
+                    
+                    <div class="tutorial-card">
+                        <div class="tutorial-number">4</div>
+                        <h4 style="color: #333; margin-bottom: 15px;">Profitez des services</h4>
+                        <p style="color: #666; font-size: 14px;">Gérez votre santé en toute simplicité</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Tableau de comparaison -->
+        <section class="container">
+            <div class="features-comparison">
+                <h3 style="color: #333; margin-bottom: 10px;">Avantages des Services en Ligne</h3>
+                <p style="color: #666;">Comparaison avec les services traditionnels</p>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>En Ligne</th>
+                            <th>Sur Place</th>
+                            <th>Gain de Temps</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Prise de RDV</td>
+                            <td><span class="check-mark">✓</span> 2 minutes</td>
+                            <td><span class="cross-mark">✗</span> 15-30 min</td>
+                            <td style="color: #4caf50; font-weight: 600;">93% plus rapide</td>
+                        </tr>
+                        <tr>
+                            <td>Résultats d'examens</td>
+                            <td><span class="check-mark">✓</span> Immédiat</td>
+                            <td><span class="cross-mark">✗</span> 1-3 jours</td>
+                            <td style="color: #4caf50; font-weight: 600;">100% plus rapide</td>
+                        </tr>
+                        <tr>
+                            <td>Paiement</td>
+                            <td><span class="check-mark">✓</span> 1 minute</td>
+                            <td><span class="cross-mark">✗</span> 10-20 min</td>
+                            <td style="color: #4caf50; font-weight: 600;">95% plus rapide</td>
+                        </tr>
+                        <tr>
+                            <td>Documents administratifs</td>
+                            <td><span class="check-mark">✓</span> 24h</td>
+                            <td><span class="cross-mark">✗</span> 3-5 jours</td>
+                            <td style="color: #4caf50; font-weight: 600;">75% plus rapide</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Support -->
+        <section style="background: #f8f9fa; padding: 60px 0; margin-top: 60px;">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 50px;">Besoin d'Aide ?</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 20px;">📞</div>
+                        <h4 style="color: #333; margin-bottom: 10px;">Support Téléphonique</h4>
+                        <p style="color: #666;">Lun-Ven : 8h00 - 20h00<br>
+                        <strong>05 39 12 34 56</strong></p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 20px;">💬</div>
+                        <h4 style="color: #333; margin-bottom: 10px;">Chat en Direct</h4>
+                        <p style="color: #666;">Assistance instantanée<br>
+                        <strong>7j/7 de 8h à 22h</strong></p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 20px;">✉️</div>
+                        <h4 style="color: #333; margin-bottom: 10px;">Email</h4>
+                        <p style="color: #666;">Réponse sous 24h<br>
+                        <strong>support@clinique-alirfane.ma</strong></p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 20px;">📚</div>
+                        <h4 style="color: #333; margin-bottom: 10px;">Centre d'Aide</h4>
+                        <p style="color: #666;">Guides et tutoriels<br>
+                        <strong>FAQ détaillée</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section style="background: linear-gradient(135deg, #667eea, #764ba2); padding: 60px 0;">
+            <div class="container" style="text-align: center;">
+                <h2 style="color: white; margin-bottom: 20px;">Commencez Dès Maintenant</h2>
+                <p style="color: white; font-size: 1.1rem; margin-bottom: 30px;">
+                    Créez votre compte patient et accédez à tous nos services en ligne
+                </p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" class="btn btn-primary" style="background: white; color: #667eea; padding: 15px 40px; font-size: 18px;">
+                        Créer mon Compte
+                    </a>
+                    <a href="#" class="btn btn-secondary" style="background: transparent; color: white; border: 2px solid white;">
+                        Voir la Démo
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <div id="footer-container"></div>
+    
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
+    <script>
+        // Charger le header et le footer
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                if (typeof initHeader === 'function') {
+                    setTimeout(initHeader, 100);
+                }
+            });
+            
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+                if (typeof initFooter === 'function') {
+                    setTimeout(initFooter, 100);
+                }
+            });
+        
+        // Fonction pour afficher le portail de connexion
+        function showLoginPortal() {
+            const portal = document.getElementById('loginPortal');
+            if (portal) {
+                portal.style.display = 'block';
+                portal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Animation d'apparition
+                portal.style.opacity = '0';
+                portal.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    portal.style.transition = 'all 0.3s ease';
+                    portal.style.opacity = '1';
+                    portal.style.transform = 'scale(1)';
+                }, 10);
+            }
+        }
+        
+        // Gestion du formulaire de connexion
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.querySelector('.login-form');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Animation de chargement
+                    const button = this.querySelector('.service-button');
+                    const originalText = button.textContent;
+                    button.textContent = 'Connexion en cours...';
+                    button.disabled = true;
+                    
+                    // Simulation de connexion
+                    setTimeout(() => {
+                        alert('Connexion réussie ! Redirection vers votre espace patient...');
+                        button.textContent = originalText;
+                        button.disabled = false;
+                    }, 2000);
+                });
+            }
+        });
+        
+        // Animation des cartes de service au survol
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observer les cartes tutoriel
+        document.querySelectorAll('.tutorial-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+        
+        // Simulation de téléchargement d'app
+        document.querySelectorAll('.store-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const store = this.textContent.includes('App Store') ? 'App Store' : 'Google Play';
+                alert(`Redirection vers ${store}...`);
+            });
+        });
+        
+        // Chat en direct simulation
+        function openChat() {
+            const chatWindow = document.createElement('div');
+            chatWindow.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 350px;
+                height: 500px;
+                background: white;
+                border-radius: 15px;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+                z-index: 1000;
+                display: flex;
+                flex-direction: column;
+            `;
+            
+            chatWindow.innerHTML = `
+                <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 20px; border-radius: 15px 15px 0 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h4 style="margin: 0;">Chat Support</h4>
+                        <button onclick="this.closest('div').parentElement.remove()" style="background: none; border: none; color: white; font-size: 20px; cursor: pointer;">×</button>
+                    </div>
+                </div>
+                <div style="flex: 1; padding: 20px; overflow-y: auto;">
+                    <div style="background: #f0f0f0; padding: 10px; border-radius: 10px; margin-bottom: 10px;">
+                        <p style="margin: 0; color: #333;">Bonjour ! Comment puis-je vous aider aujourd'hui ?</p>
+                    </div>
+                </div>
+                <div style="padding: 20px; border-top: 1px solid #e0e0e0;">
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" placeholder="Tapez votre message..." style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 25px;">
+                        <button style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer;">Envoyer</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(chatWindow);
+        }
+        
+        // Bouton de chat flottant
+        const chatButton = document.createElement('button');
+        chatButton.innerHTML = '💬';
+        chatButton.style.cssText = `
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+        `;
+        
+        chatButton.onmouseover = function() {
+            this.style.transform = 'scale(1.1)';
+        };
+        
+        chatButton.onmouseout = function() {
+            this.style.transform = 'scale(1)';
+        };
+        
+        chatButton.onclick = openChat;
+        
+        // Ajouter le bouton de chat après le chargement
+        window.addEventListener('load', function() {
+            document.body.appendChild(chatButton);
+        });
+        
+        // Compteur animé pour les statistiques
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current) + '%';
+            }, 20);
+        }
+        
+        // Animer les pourcentages de gain de temps
+        const percentages = document.querySelectorAll('td[style*="color: #4caf50"]');
+        percentages.forEach(td => {
+            const text = td.textContent;
+            const value = parseInt(text);
+            if (!isNaN(value)) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateCounter(entry.target, value);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+                observer.observe(td);
+            }
+        });
+    </script>
+</body>
+</html>

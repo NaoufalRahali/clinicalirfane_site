@@ -1,0 +1,572 @@
+/* css/footer.css */
+/* Styles spécifiques au Footer de la Clinique Alirfane */
+
+/* ========================
+   Variables CSS du Footer
+======================== */
+:root {
+    --footer-primary: #1e3c72;
+    --footer-secondary: #2a5298;
+    --footer-tertiary: #3b7cb8;
+    --footer-gold: #ffd700;
+    --footer-text: #ffffff;
+    --footer-text-muted: rgba(255, 255, 255, 0.8);
+    --footer-overlay: rgba(0, 0, 0, 0.2);
+    --footer-overlay-dark: rgba(0, 0, 0, 0.3);
+}
+
+/* ========================
+   Structure du Footer
+======================== */
+.footer-main {
+    background: linear-gradient(135deg, var(--footer-primary) 0%, var(--footer-secondary) 50%, var(--footer-tertiary) 100%);
+    color: var(--footer-text);
+    position: relative;
+    overflow: hidden;
+    margin-top: auto;
+}
+
+/* Effet de vagues animées */
+.footer-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat;
+    background-size: cover;
+    opacity: 0.3;
+}
+
+.footer-main::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"><path fill="%23ffffff" fill-opacity="0.1" d="M0,50 C360,100 720,0 1440,50 L1440,100 L0,100 Z"></path></svg>') repeat-x;
+    animation: wave 10s linear infinite;
+}
+
+@keyframes wave {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-50px); }
+}
+
+/* ========================
+   Top Footer
+======================== */
+.top-footer {
+    position: relative;
+    z-index: 1;
+    padding: 60px 0 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 50px;
+}
+
+/* ========================
+   Logo Footer
+======================== */
+.footer-logo-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--footer-text);
+    transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+    transform: scale(1.05);
+}
+
+.footer-logo-ca {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--footer-text);
+    margin-right: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.footer-logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-clinique {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.footer-alirfane {
+    font-size: 28px;
+    font-weight: 300;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    margin: 5px 0;
+}
+
+.footer-tanger {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+/* ========================
+   Sections du Footer
+======================== */
+.footer-contact-section h3,
+.footer-access-section h3,
+.footer-social-section h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-contact-section h3::after,
+.footer-access-section h3::after,
+.footer-social-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--footer-gold), #ffed4e);
+}
+
+/* Contact Section */
+.footer-contact-section address {
+    font-style: normal;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.btn-footer {
+    display: inline-block;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    color: var(--footer-text);
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-footer:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.contact-info {
+    margin-top: 25px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    color: var(--footer-text);
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateX(5px);
+}
+
+.contact-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.contact-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.contact-text span {
+    font-size: 11px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    letter-spacing: 1px;
+}
+
+/* Access Section */
+.footer-access-section p {
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.footer-access-section em {
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+/* Social Section */
+.social-links {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-links a {
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--footer-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px) rotate(5deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================
+   Navigation Footer
+======================== */
+.nav-footer {
+    background: var(--footer-overlay);
+    padding: 25px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.nav-footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.nav-footer ul {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    list-style: none;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-footer a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--footer-gold);
+    transition: width 0.3s ease;
+}
+
+.nav-footer a:hover {
+    opacity: 1;
+}
+
+.nav-footer a:hover::after {
+    width: 100%;
+}
+
+/* ========================
+   Bottom Footer
+======================== */
+.bottom-footer {
+    background: var(--footer-overlay-dark);
+    padding: 20px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.bottom-footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright {
+    font-size: 13px;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.legal-links {
+    display: flex;
+    gap: 30px;
+}
+
+.legal-links a {
+    color: var(--footer-text);
+    text-decoration: none;
+    font-size: 13px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.legal-links a:hover {
+    opacity: 1;
+}
+
+/* ========================
+   Popup Avis
+======================== */
+.avis-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.avis-popup.active {
+    display: flex;
+}
+
+.avis-content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.avis-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avis-close span {
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: #333;
+    transform: rotate(45deg);
+}
+
+.avis-close span:last-child {
+    transform: rotate(-45deg);
+}
+
+.avis-content h3 {
+    text-align: center;
+    color: var(--footer-primary);
+    margin-bottom: 10px;
+}
+
+.avis-content p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.stars-rating {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+    list-style: none;
+    padding: 0;
+}
+
+.stars-rating li {
+    cursor: pointer;
+    font-size: 30px;
+    transition: transform 0.2s ease;
+    filter: grayscale(1);
+}
+
+.stars-rating li:hover,
+.stars-rating li.active {
+    transform: scale(1.2);
+    filter: grayscale(0);
+}
+
+#avisForm textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+#avisForm button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    background: linear-gradient(135deg, var(--footer-primary), var(--footer-secondary));
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#avisForm button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================
+   Responsive Design
+======================== */
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 20px;
+    }
+
+    .nav-footer ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .bottom-footer-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .legal-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-logo-ca {
+        font-size: 36px;
+    }
+
+    .footer-alirfane {
+        font-size: 24px;
+    }
+
+    .footer-contact-section h3,
+    .footer-access-section h3,
+    .footer-social-section h3 {
+        font-size: 18px;
+    }
+
+    .contact-text {
+        font-size: 13px;
+    }
+
+    .contact-text span {
+        font-size: 10px;
+    }
+
+    .btn-footer {
+        font-size: 13px;
+        padding: 8px 16px;
+    }
+
+    .nav-footer a {
+        font-size: 12px;
+    }
+
+    .copyright,
+    .legal-links a {
+        font-size: 11px;
+    }
+}

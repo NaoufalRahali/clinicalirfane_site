@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Votre séjour - Hospitalisation - Clinique Alirfane Tanger">
+    <title>Votre Séjour - Clinique Alirfane Tanger</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .sejour-hero {
+            background: linear-gradient(135deg, #6c63ff, #5650de);
+            padding: 100px 0 60px;
+            color: white;
+            text-align: center;
+        }
+        
+        .room-types {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+        
+        .room-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            margin-bottom: 30px;
+        }
+        
+        .room-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .room-image {
+            height: 250px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .room-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            color: #6c63ff;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .room-details {
+            padding: 30px;
+        }
+        
+        .room-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .room-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .feature-icon {
+            color: #6c63ff;
+            font-size: 18px;
+        }
+        
+        .services-timeline {
+            padding: 60px 0;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e0e0e0;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding: 20px 40px;
+            width: 50%;
+            margin-bottom: 40px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+            padding-right: 60px;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 60px;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #6c63ff;
+            border: 4px solid white;
+            border-radius: 50%;
+            top: 25px;
+            box-shadow: 0 3px 10px rgba(108, 99, 255, 0.3);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-title {
+            color: #6c63ff;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .amenity-card {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .amenity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .amenity-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .visitor-info {
+            background: #fff5f5;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            border-left: 5px solid #ff6b6b;
+        }
+        
+        .visitor-hours {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .hour-block {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .hour-block h4 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+        
+        .meal-schedule {
+            background: #f0f8ff;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+        
+        .meal-times {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .meal-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        .meal-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .meal-time {
+            color: #6c63ff;
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 70px !important;
+                padding-right: 20px !important;
+                text-align: left !important;
+            }
+            
+            .timeline-dot {
+                left: 20px !important;
+                right: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+    
+    <!-- Contenu Principal -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="sejour-hero">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 20px;">Votre Séjour</h1>
+                <p style="font-size: 1.25rem; opacity: 0.95;">Confort et bien-être durant votre hospitalisation</p>
+            </div>
+        </section>
+        
+        <!-- Types de Chambres -->
+        <section class="room-types">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 50px;">Nos Types de Chambres</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+                    <!-- Chambre Standard -->
+                    <div class="room-card">
+                        <div class="room-image">
+                            <span style="font-size: 60px; color: white;">🛏️</span>
+                            <span class="room-badge">Standard</span>
+                        </div>
+                        <div class="room-details">
+                            <h3 class="room-title">Chambre Standard</h3>
+                            <p style="color: #666; margin-bottom: 20px;">Chambre double confortable et fonctionnelle</p>
+                            
+                            <div class="room-features">
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>2 lits médicalisés</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Salle de bain privée</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Télévision</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Climatisation</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Placard de rangement</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Table de chevet</span>
+                                </div>
+                            </div>
+                            
+                            <div style="padding-top: 20px; border-top: 1px solid #e0e0e0; margin-top: 20px;">
+                                <p style="color: #6c63ff; font-weight: 600;">À partir de 800 DH / nuit</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chambre Individuelle -->
+                    <div class="room-card">
+                        <div class="room-image">
+                            <span style="font-size: 60px; color: white;">🛌</span>
+                            <span class="room-badge">Individuelle</span>
+                        </div>
+                        <div class="room-details">
+                            <h3 class="room-title">Chambre Individuelle</h3>
+                            <p style="color: #666; margin-bottom: 20px;">Intimité et tranquillité pour votre rétablissement</p>
+                            
+                            <div class="room-features">
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Lit médicalisé simple</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Salle de bain privée</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Télévision écran plat</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>WiFi gratuit</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Fauteuil accompagnant</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Mini-réfrigérateur</span>
+                                </div>
+                            </div>
+                            
+                            <div style="padding-top: 20px; border-top: 1px solid #e0e0e0; margin-top: 20px;">
+                                <p style="color: #6c63ff; font-weight: 600;">À partir de 1200 DH / nuit</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Suite VIP -->
+                    <div class="room-card">
+                        <div class="room-image">
+                            <span style="font-size: 60px; color: white;">⭐</span>
+                            <span class="room-badge">Suite VIP</span>
+                        </div>
+                        <div class="room-details">
+                            <h3 class="room-title">Suite VIP</h3>
+                            <p style="color: #666; margin-bottom: 20px;">Luxe et confort exceptionnels</p>
+                            
+                            <div class="room-features">
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Suite spacieuse</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Salon séparé</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Salle de bain luxueuse</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Smart TV 55"</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Service en chambre</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Coffre-fort</span>
+                                </div>
+                            </div>
+                            
+                            <div style="padding-top: 20px; border-top: 1px solid #e0e0e0; margin-top: 20px;">
+                                <p style="color: #6c63ff; font-weight: 600;">À partir de 2500 DH / nuit</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Timeline du Séjour -->
+        <section class="services-timeline">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 50px;">Votre Parcours d'Hospitalisation</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title">Admission</h4>
+                            <p style="color: #666;">Accueil personnalisé, formalités administratives et installation dans votre chambre</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title">Prise en Charge</h4>
+                            <p style="color: #666;">Rencontre avec l'équipe soignante et établissement du plan de soins</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title">Soins & Traitement</h4>
+                            <p style="color: #666;">Suivi médical quotidien, examens et traitements selon protocole</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title">Convalescence</h4>
+                            <p style="color: #666;">Repos et récupération avec surveillance médicale continue</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title">Sortie</h4>
+                            <p style="color: #666;">Bilan final, prescriptions et recommandations pour le suivi post-hospitalisation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services et Équipements -->
+        <section style="background: #f8f9fa; padding: 60px 0;">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 50px;">Services & Équipements</h2>
+                
+                <div class="amenities-grid">
+                    <div class="amenity-card">
+                        <div class="amenity-icon">📺</div>
+                        <h4 style="color: #333; margin-bottom: 10px;">Télévision</h4>
+                        <p style="color: #666; font-size: 14px;">Chaînes nationales et internationales</p>
+                    </div>
+                    
+                    <div class="amenity-card">
+                        <div class="amenity-icon">📶</div>
+                        <h4 style="color: #333; margin-bottom: 10px;">WiFi Gratuit</h4>
+                        <p style="color: #666; font-size: 14px;">Connexion haut débit dans toutes les chambres</p>
+                    </div>
+                    
+                    <div class="amenity-card">
+                        <div class="amenity-icon">🍽️</div>
+                        <h4 style="color: #333; margin-bottom: 10px;">Restauration</h4>
+                        <p style="color: #666; font-size: 14px;">Menus adaptés et service en chambre</p>
+                    </div>
+                    
+                    <div class="amenity-card">
+                        <div class="amenity-icon">🧺</div>
+                        <h4 style="color: #333; margin-bottom: 10px;">Blanchisserie</h4>
+                        <p style="color: #666; font-size: 14px;">Service de nettoyage quotidien</p>
+                    </div>
+                    
+                    <div class="amenity-card">
+                        <div class="amenity-icon">🛁</div>
+                        <h4 style="color: #333; margin-bottom: 10px;">Salle de Bain</h4>
+                        <p style="color: #666; font-size: 14px;">Équipée et adaptée PMR</p>
+                    </div>
+                    
+                    <div class="amenity-card">
+                        <div class="amenity-icon">🔐</div>
+                        <h4 style="color: #333; margin-bottom: 10px;">Sécurité</h4>
+                        <p style="color: #666; font-size: 14px;">Surveillance 24h/24 et coffre-fort</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Repas -->
+        <section class="container" style="padding: 60px 20px;">
+            <div class="meal-schedule">
+                <h3 style="color: #333; margin-bottom: 10px;">🍽️ Service de Restauration</h3>
+                <p style="color: #666;">Repas équilibrés préparés par notre équipe de nutritionnistes</p>
+                
+                <div class="meal-times">
+                    <div class="meal-item">
+                        <div class="meal-icon">☕</div>
+                        <div class="meal-time">7h30 - 9h00</div>
+                        <div style="color: #666;">Petit-déjeuner</div>
+                    </div>
+                    
+                    <div class="meal-item">
+                        <div class="meal-icon">🥗</div>
+                        <div class="meal-time">12h00 - 13h30</div>
+                        <div style="color: #666;">Déjeuner</div>
+                    </div>
+                    
+                    <div class="meal-item">
+                        <div class="meal-icon">🍰</div>
+                        <div class="meal-time">16h00 - 16h30</div>
+                        <div style="color: #666;">Collation</div>
+                    </div>
+                    
+                    <div class="meal-item">
+                        <div class="meal-icon">🍽️</div>
+                        <div class="meal-time">19h00 - 20h30</div>
+                        <div style="color: #666;">Dîner</div>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 30px; padding: 20px; background: white; border-radius: 10px; color: #666;">
+                    <strong>Note :</strong> Menus spéciaux disponibles sur demande (régime diabétique, sans sel, végétarien, halal, etc.)
+                </p>
+            </div>
+        </section>
+        
+        <!-- Informations Visiteurs -->
+        <section class="container" style="padding: 60px 20px;">
+            <div class="visitor-info">
+                <h3 style="color: #333; margin-bottom: 10px;">👥 Informations pour les Visiteurs</h3>
+                <p style="color: #666;">Horaires de visite et règlement intérieur</p>
+                
+                <div class="visitor-hours">
+                    <div class="hour-block">
+                        <h4>Services Généraux</h4>
+                        <p style="color: #666; font-size: 14px;">10h00 - 12h00<br>15h00 - 20h00</p>
+                    </div>
+                    
+                    <div class="hour-block">
+                        <h4>Soins Intensifs</h4>
+                        <p style="color: #666; font-size: 14px;">14h00 - 15h00<br>19h00 - 20h00</p>
+                    </div>
+                    
+                    <div class="hour-block">
+                        <h4>Maternité</h4>
+                        <p style="color: #666; font-size: 14px;">10h00 - 12h00<br>14h00 - 20h00</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ffcccc;">
+                    <h4 style="color: #ff6b6b; margin-bottom: 15px;">Règles à respecter :</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 8px 0; color: #666;">• Maximum 2 visiteurs par patient</li>
+                        <li style="padding: 8px 0; color: #666;">• Port du masque obligatoire</li>
+                        <li style="padding: 8px 0; color: #666;">• Respect du repos des patients</li>
+                        <li style="padding: 8px 0; color: #666;">• Téléphones en mode silencieux</li>
+                        <li style="padding: 8px 0; color: #666;">• Enfants de moins de 12 ans non admis en soins intensifs</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services Additionnels -->
+        <section style="background: #f8f9fa; padding: 60px 0;">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 50px;">Services Additionnels</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                    <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <h4 style="color: #6c63ff; margin-bottom: 15px;">🏪 Boutique</h4>
+                        <p style="color: #666;">Produits de première nécessité, presse et cadeaux<br>
+                        <strong>Horaires :</strong> 8h00 - 20h00</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <h4 style="color: #6c63ff; margin-bottom: 15px;">☕ Cafétéria</h4>
+                        <p style="color: #666;">Espace de restauration pour les visiteurs<br>
+                        <strong>Horaires :</strong> 7h00 - 21h00</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <h4 style="color: #6c63ff; margin-bottom: 15px;">🕌 Salle de Prière</h4>
+                        <p style="color: #666;">Espace de recueillement disponible<br>
+                        <strong>Accès :</strong> 24h/24</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <h4 style="color: #6c63ff; margin-bottom: 15px;">💇 Coiffeur</h4>
+                        <p style="color: #666;">Service de coiffure sur rendez-vous<br>
+                        <strong>Disponible :</strong> Mar-Sam</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <h4 style="color: #6c63ff; margin-bottom: 15px;">📚 Bibliothèque</h4>
+                        <p style="color: #666;">Livres et magazines à disposition<br>
+                        <strong>Accès :</strong> Libre</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <h4 style="color: #6c63ff; margin-bottom: 15px;">🌳 Jardin</h4>
+                        <p style="color: #666;">Espace extérieur aménagé pour la détente<br>
+                        <strong>Accès :</strong> 7h00 - 19h00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section style="background: linear-gradient(135deg, #6c63ff, #5650de); padding: 60px 0;">
+            <div class="container" style="text-align: center;">
+                <h2 style="color: white; margin-bottom: 20px;">Questions sur Votre Séjour ?</h2>
+                <p style="color: white; font-size: 1.1rem; margin-bottom: 30px;">
+                    Notre équipe d'admission est à votre écoute
+                </p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="tel:0539123456" class="btn btn-primary" style="background: white; color: #6c63ff;">
+                        📞 Service Admission
+                    </a>
+                    <a href="preparer-visite.html" class="btn btn-secondary" style="background: transparent; color: white; border: 2px solid white;">
+                        📋 Préparer ma visite
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <div id="footer-container"></div>
+    
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
+    <script>
+        // Charger le header et le footer
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                if (typeof initHeader === 'function') {
+                    setTimeout(initHeader, 100);
+                }
+            });
+            
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+                if (typeof initFooter === 'function') {
+                    setTimeout(initFooter, 100);
+                }
+            });
+        
+        // Animation de la timeline au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observer les éléments de la timeline
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'all 0.6s ease';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>

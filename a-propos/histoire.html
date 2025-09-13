@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Histoire - Clinique Alirfane Tanger">
+    <title>Notre Histoire - Clinique Alirfane Tanger</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .histoire-hero {
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            padding: 100px 0 60px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.2" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+        
+        .timeline-container {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 100px;
+            bottom: 100px;
+            width: 3px;
+            background: linear-gradient(180deg, #8b5cf6, #3b82f6);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 80px;
+            position: relative;
+            align-items: center;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding: 0 50px;
+        }
+        
+        .timeline-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            box-shadow: 0 5px 20px rgba(139, 92, 246, 0.3);
+            z-index: 2;
+        }
+        
+        .timeline-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-text {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-image {
+            flex: 1;
+            padding: 0 50px;
+        }
+        
+        .timeline-img-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+        }
+        
+        .founders-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .founder-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .founder-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .founder-image {
+            height: 250px;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: white;
+        }
+        
+        .founder-info {
+            padding: 30px;
+        }
+        
+        .founder-name {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .founder-role {
+            color: #8b5cf6;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .founder-bio {
+            color: #666;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        .milestones-section {
+            padding: 80px 0;
+        }
+        
+        .milestones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .milestone-card {
+            background: linear-gradient(135deg, #fff, #f8f9fa);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .milestone-card:hover {
+            border-color: #8b5cf6;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.1);
+        }
+        
+        .milestone-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 20px;
+        }
+        
+        .milestone-year {
+            font-size: 24px;
+            font-weight: 700;
+            color: #8b5cf6;
+            margin-bottom: 10px;
+        }
+        
+        .milestone-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .milestone-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .evolution-section {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            padding: 80px 0;
+        }
+        
+        .evolution-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .evolution-stat {
+            text-align: center;
+        }
+        
+        .evolution-number {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .evolution-label {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .evolution-sublabel {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+        
+        .future-section {
+            padding: 80px 0;
+        }
+        
+        .future-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .future-card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid;
+            transition: transform 0.3s ease;
+        }
+        
+        .future-card:nth-child(1) { border-color: #8b5cf6; }
+        .future-card:nth-child(2) { border-color: #3b82f6; }
+        .future-card:nth-child(3) { border-color: #06b6d4; }
+        
+        .future-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .future-icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .future-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .future-text {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 30px;
+            }
+            
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+                padding-left: 60px;
+            }
+            
+            .timeline-year {
+                left: 30px;
+                width: 60px;
+                height: 60px;
+                font-size: 18px;
+            }
+            
+            .timeline-content,
+            .timeline-image {
+                padding: 20px 20px 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+    
+    <!-- Contenu Principal -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="histoire-hero">
+            <div class="hero-bg"></div>
+            <div class="container" style="position: relative;">
+                <h1 style="font-size: 3rem; margin-bottom: 20px;">Notre Histoire</h1>
+                <p style="font-size: 1.25rem; opacity: 0.95; max-width: 700px; margin: 0 auto;">
+                    Trois décennies d'innovation et de dévouement au service de la santé
+                </p>
+            </div>
+        </section>
+        
+        <!-- Timeline -->
+        <section class="timeline-container">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 80px;">Un Parcours d'Excellence</h2>
+                
+                <div class="timeline-line"></div>
+                
+                <!-- 1995 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-card">
+                            <h3 class="timeline-title">La Fondation</h3>
+                            <p class="timeline-text">
+                                En 1995, la Clinique Alirfane ouvre ses portes à Tanger avec une vision claire : 
+                                offrir des soins médicaux de qualité supérieure dans un environnement moderne et accueillant. 
+                                Fondée par un groupe de médecins visionnaires, la clinique démarre avec 50 lits et 
+                                une équipe de 30 professionnels de santé.
+                            </p>
+                            <p class="timeline-text">
+                                Dès le début, l'accent est mis sur l'excellence médicale et l'approche humaine des soins, 
+                                des valeurs qui restent au cœur de notre mission aujourd'hui.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-year">1995</div>
+                    <div class="timeline-image">
+                        <div class="timeline-img-placeholder">🏥</div>
+                    </div>
+                </div>
+                
+                <!-- 2000 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-card">
+                            <h3 class="timeline-title">Première Expansion</h3>
+                            <p class="timeline-text">
+                                L'an 2000 marque un tournant majeur avec l'ouverture de notre nouveau bloc opératoire 
+                                ultramoderne et l'expansion de nos services de spécialités. La capacité d'accueil 
+                                passe à 100 lits et nous accueillons de nouveaux spécialistes renommés.
+                            </p>
+                            <p class="timeline-text">
+                                Introduction de technologies médicales de pointe incluant le premier scanner de 
+                                dernière génération de la région.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-year">2000</div>
+                    <div class="timeline-image">
+                        <div class="timeline-img-placeholder">🔬</div>
+                    </div>
+                </div>
+                
+                <!-- 2005 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-card">
+                            <h3 class="timeline-title">Centre d'Excellence</h3>
+                            <p class="timeline-text">
+                                En 2005, la clinique obtient sa première certification ISO 9001, confirmant notre 
+                                engagement envers la qualité et l'amélioration continue. Lancement du centre de 
+                                cardiologie interventionnelle et du service de chirurgie mini-invasive.
+                            </p>
+                            <p class="timeline-text">
+                                Création de notre programme de formation continue pour le personnel médical et 
+                                paramédical, en partenariat avec des institutions internationales.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-year">2005</div>
+                    <div class="timeline-image">
+                        <div class="timeline-img-placeholder">🏆</div>
+                    </div>
+                </div>
+                
+                <!-- 2010 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-card">
+                            <h3 class="timeline-title">Innovation Technologique</h3>
+                            <p class="timeline-text">
+                                2010 voit l'installation de notre première IRM 3 Tesla et la digitalisation complète 
+                                de nos systèmes de gestion des dossiers patients. Lancement de notre plateforme de 
+                                télémédecine, une première dans la région.
+                            </p>
+                            <p class="timeline-text">
+                                Ouverture du nouveau service de maternité avec 30 lits et équipements de néonatologie 
+                                de dernière génération.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-year">2010</div>
+                    <div class="timeline-image">
+                        <div class="timeline-img-placeholder">💻</div>
+                    </div>
+                </div>
+                
+                <!-- 2015 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-card">
+                            <h3 class="timeline-title">Expansion Majeure</h3>
+                            <p class="timeline-text">
+                                Une expansion majeure porte notre capacité à 150 lits avec l'ouverture d'une nouvelle 
+                                aile dédiée aux soins intensifs et à la chirurgie complexe. Introduction de la 
+                                chirurgie robotique et développement du centre d'oncologie.
+                            </p>
+                            <p class="timeline-text">
+                                Partenariats établis avec des centres médicaux internationaux pour l'échange 
+                                d'expertise et les cas complexes.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-year">2015</div>
+                    <div class="timeline-image">
+                        <div class="timeline-img-placeholder">🚀</div>
+                    </div>
+                </div>
+                
+                <!-- 2020 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-card">
+                            <h3 class="timeline-title">Résilience et Adaptation</h3>
+                            <p class="timeline-text">
+                                Face à la pandémie mondiale, la clinique démontre sa capacité d'adaptation exceptionnelle. 
+                                Création d'une unité COVID-19 dédiée, mise en place de protocoles sanitaires stricts, 
+                                et développement accéléré de nos services de téléconsultation.
+                            </p>
+                            <p class="timeline-text">
+                                Reconnaissance nationale pour notre gestion exemplaire de la crise sanitaire et notre 
+                                contribution à la lutte contre la pandémie.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-image">
+                        <div class="timeline-img-placeholder">🛡️</div>
+                    </div>
+                </div>
+                
+                <!-- 2024 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-card">
+                            <h3 class="timeline-title">Vision 2030</h3>
+                            <p class="timeline-text">
+                                Aujourd'hui, avec 200 lits, plus de 150 médecins spécialistes et 600 employés, 
+                                la Clinique Alirfane est un leader régional en soins de santé. Lancement de notre 
+                                plan stratégique Vision 2030 pour devenir un centre médical de référence internationale.
+                            </p>
+                            <p class="timeline-text">
+                                Introduction de l'intelligence artificielle dans le diagnostic, développement de la 
+                                médecine personnalisée et engagement renforcé envers le développement durable.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-image">
+                        <div class="timeline-img-placeholder">🌟</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Fondateurs -->
+        <section class="founders-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Nos Fondateurs</h2>
+                <p style="text-align: center; color: #666; max-width: 700px; margin: 0 auto;">
+                    Visionnaires et pionniers qui ont posé les fondations de notre excellence
+                </p>
+                
+                <div class="founders-grid">
+                    <div class="founder-card">
+                        <div class="founder-image">👨‍⚕️</div>
+                        <div class="founder-info">
+                            <h3 class="founder-name">Dr. Mohammed Alirfane</h3>
+                            <p class="founder-role">Fondateur & Chirurgien en Chef</p>
+                            <p class="founder-bio">
+                                Pionnier de la chirurgie moderne à Tanger, le Dr. Alirfane a consacré sa vie à 
+                                l'amélioration des soins de santé dans la région. Formé dans les meilleures 
+                                institutions européennes, il a apporté expertise et innovation.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="founder-card">
+                        <div class="founder-image">👩‍⚕️</div>
+                        <div class="founder-info">
+                            <h3 class="founder-name">Dr. Fatima Bennani</h3>
+                            <p class="founder-role">Co-fondatrice & Directrice Médicale</p>
+                            <p class="founder-bio">
+                                Spécialiste en médecine interne avec une vision holistique des soins. Le Dr. Bennani 
+                                a établi les standards de qualité et les protocoles qui font notre réputation aujourd'hui.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="founder-card">
+                        <div class="founder-image">👨‍💼</div>
+                        <div class="founder-info">
+                            <h3 class="founder-name">M. Hassan Tazi</h3>
+                            <p class="founder-role">Co-fondateur & Directeur Administratif</p>
+                            <p class="founder-bio">
+                                Visionnaire en gestion hospitalière, M. Tazi a transformé la clinique en une 
+                                institution moderne et efficiente, alliant technologie de pointe et gestion humaine.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Jalons Importants -->
+        <section class="milestones-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Jalons Importants</h2>
+                <p style="text-align: center; color: #666; max-width: 700px; margin: 0 auto;">
+                    Les moments clés qui ont façonné notre parcours
+                </p>
+                
+                <div class="milestones-grid">
+                    <div class="milestone-card">
+                        <div class="milestone-icon">🎯</div>
+                        <div class="milestone-year">1997</div>
+                        <div class="milestone-title">Premier Prix</div>
+                        <div class="milestone-desc">
+                            Prix d'excellence en soins hospitaliers décerné par le Ministère de la Santé
+                        </div>
+                    </div>
+                    
+                    <div class="milestone-card">
+                        <div class="milestone-icon">🤝</div>
+                        <div class="milestone-year">2002</div>
+                        <div class="milestone-title">Partenariat International</div>
+                        <div class="milestone-desc">
+                            Premier partenariat avec un centre médical européen pour l'échange d'expertise
+                        </div>
+                    </div>
+                    
+                    <div class="milestone-card">
+                        <div class="milestone-icon">📱</div>
+                        <div class="milestone-year">2008</div>
+                        <div class="milestone-title">Digitalisation</div>
+                        <div class="milestone-desc">
+                            Première clinique de la région entièrement digitalisée
+                        </div>
+                    </div>
+                    
+                    <div class="milestone-card">
+                        <div class="milestone-icon">🏅</div>
+                        <div class="milestone-year">2012</div>
+                        <div class="milestone-title">Certification JCI</div>
+                        <div class="milestone-desc">
+                            Obtention de l'accréditation internationale Joint Commission International
+                        </div>
+                    </div>
+                    
+                    <div class="milestone-card">
+                        <div class="milestone-icon">🤖</div>
+                        <div class="milestone-year">2018</div>
+                        <div class="milestone-title">Chirurgie Robotique</div>
+                        <div class="milestone-desc">
+                            Introduction du premier système de chirurgie robotique au Nord du Maroc
+                        </div>
+                    </div>
+                    
+                    <div class="milestone-card">
+                        <div class="milestone-icon">🌱</div>
+                        <div class="milestone-year">2022</div>
+                        <div class="milestone-title">Éco-Responsabilité</div>
+                        <div class="milestone-desc">
+                            Certification Green Hospital pour nos initiatives environnementales
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Évolution en Chiffres -->
+        <section class="evolution-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Notre Évolution en Chiffres</h2>
+                <p style="text-align: center; color: #666; max-width: 700px; margin: 0 auto;">
+                    Une croissance constante au service de votre santé
+                </p>
+                
+                <div class="evolution-stats">
+                    <div class="evolution-stat">
+                        <div class="evolution-number">50→200</div>
+                        <div class="evolution-label">Lits</div>
+                        <div class="evolution-sublabel">1995 → 2024</div>
+                    </div>
+                    
+                    <div class="evolution-stat">
+                        <div class="evolution-number">30→600</div>
+                        <div class="evolution-label">Employés</div>
+                        <div class="evolution-sublabel">1995 → 2024</div>
+                    </div>
+                    
+                    <div class="evolution-stat">
+                        <div class="evolution-number">5→35</div>
+                        <div class="evolution-label">Spécialités</div>
+                        <div class="evolution-sublabel">1995 → 2024</div>
+                    </div>
+                    
+                    <div class="evolution-stat">
+                        <div class="evolution-number">1K→50K</div>
+                        <div class="evolution-label">Patients/An</div>
+                        <div class="evolution-sublabel">1995 → 2024</div>
+                    </div>
+                    
+                    <div class="evolution-stat">
+                        <div class="evolution-number">2→12</div>
+                        <div class="evolution-label">Blocs Opératoires</div>
+                        <div class="evolution-sublabel">1995 → 2024</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Vision Future -->
+        <section class="future-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Vers l'Avenir</h2>
+                <p style="text-align: center; color: #666; max-width: 700px; margin: 0 auto;">
+                    Notre vision pour les prochaines années
+                </p>
+                
+                <div class="future-cards">
+                    <div class="future-card">
+                        <div class="future-icon">🏗️</div>
+                        <h3 class="future-title">Expansion 2025-2027</h3>
+                        <p class="future-text">
+                            Construction d'un nouveau centre de recherche médicale et d'une tour d'hospitalisation 
+                            de 100 lits supplémentaires. Développement d'un centre de formation pour les professionnels 
+                            de santé de la région.
+                        </p>
+                    </div>
+                    
+                    <div class="future-card">
+                        <div class="future-icon">🔬</div>
+                        <h3 class="future-title">Innovation 2028-2030</h3>
+                        <p class="future-text">
+                            Intégration de l'intelligence artificielle dans tous nos services de diagnostic. 
+                            Développement de la médecine génomique et personnalisée. Création d'un laboratoire 
+                            de thérapies cellulaires avancées.
+                        </p>
+                    </div>
+                    
+                    <div class="future-card">
+                        <div class="future-icon">🌍</div>
+                        <h3 class="future-title">Rayonnement International</h3>
+                        <p class="future-text">
+                            Ambition de devenir un centre de référence pour l'Afrique du Nord. Développement 
+                            du tourisme médical avec des programmes spécialisés. Partenariats avec les meilleures 
+                            institutions mondiales.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA -->
+        <section style="background: linear-gradient(135deg, #8b5cf6, #3b82f6); padding: 80px 0;">
+            <div class="container" style="text-align: center;">
+                <h2 style="color: white; font-size: 36px; margin-bottom: 20px;">
+                    Écrivons Ensemble le Prochain Chapitre
+                </h2>
+                <p style="color: white; font-size: 18px; opacity: 0.95; max-width: 600px; margin: 0 auto 30px;">
+                    Rejoignez-nous dans notre mission de fournir des soins d'exception
+                </p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="presentation.html" class="btn-white" style="background: white; color: #8b5cf6; padding: 15px 40px; text-decoration: none; border-radius: 30px; font-weight: 600;">
+                        Découvrir la Clinique
+                    </a>
+                    <a href="recrutement.html" class="btn-outline" style="background: transparent; color: white; padding: 15px 40px; border: 2px solid white; text-decoration: none; border-radius: 30px; font-weight: 600;">
+                        Rejoindre notre Équipe
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <div id="footer-container"></div>
+    
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
+    <script>
+        // Charger le header et le footer
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                if (typeof initHeader === 'function') {
+                    setTimeout(initHeader, 100);
+                }
+            });
+            
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+                if (typeof initFooter === 'function') {
+                    setTimeout(initFooter, 100);
+                }
+            });
+        
+        // Animation timeline au scroll
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        // Observer les éléments de la timeline
+        document.querySelectorAll('.timeline-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            if (index % 2 === 0) {
+                card.style.transform = 'translateX(-50px)';
+            } else {
+                card.style.transform = 'translateX(50px)';
+            }
+            card.style.transition = 'all 0.8s ease';
+            timelineObserver.observe(card);
+        });
+        
+        // Animation des chiffres d'évolution
+        function animateEvolution() {
+            const numbers = document.querySelectorAll('.evolution-number');
+            
+            numbers.forEach(num => {
+                if (!num.classList.contains('animated')) {
+                    num.classList.add('animated');
+                    const text = num.textContent;
+                    const parts = text.split('→');
+                    
+                    if (parts.length === 2) {
+                        const start = parseInt(parts[0].replace(/\D/g, ''));
+                        const end = parseInt(parts[1].replace(/\D/g, ''));
+                        const hasK = parts[1].includes('K');
+                        
+                        let current = start;
+                        const increment = (end - start) / 50;
+                        
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= end) {
+                                current = end;
+                                clearInterval(timer);
+                                
+                                let startDisplay = start;
+                                let endDisplay = end;
+                                if (hasK) {
+                                    startDisplay = parts[0];
+                                    endDisplay = parts[1];
+                                }
+                                num.textContent = `${startDisplay}→${endDisplay}`;
+                            } else {
+                                let display = Math.floor(current);
+                                if (hasK && current > 1000) {
+                                    display = (current / 1000).toFixed(0) + 'K';
+                                }
+                                num.textContent = `${parts[0]}→${display}`;
+                            }
+                        }, 30);
+                    }
+                }
+            });
+        }
+        
+        // Observer pour les statistiques d'évolution
+        const evolutionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateEvolution();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        const evolutionSection = document.querySelector('.evolution-stats');
+        if (evolutionSection) {
+            evolutionObserver.observe(evolutionSection);
+        }
+        
+        // Animation générale au scroll
+        const generalObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        // Observer les autres éléments
+        document.querySelectorAll('.founder-card, .milestone-card, .future-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            generalObserver.observe(el);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Horaires d'ouverture - Clinique Alirfane Tanger">
+    <title>Horaires d'Ouverture - Clinique Alirfane Tanger</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .horaires-hero {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            padding: 100px 0 60px;
+            color: white;
+            text-align: center;
+        }
+        
+        .current-status {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: -40px auto 60px;
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .status-open {
+            background: #e8f5e9;
+            color: #4caf50;
+        }
+        
+        .status-closed {
+            background: #ffebee;
+            color: #f44336;
+        }
+        
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+        
+        .horaires-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .horaires-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .horaires-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .horaires-header {
+            padding: 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .service-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .service-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .service-status {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .horaires-body {
+            padding: 25px;
+        }
+        
+        .day-schedule {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .day-schedule:last-child {
+            border-bottom: none;
+        }
+        
+        .day-name {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .day-hours {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .today {
+            background: #e8f5e9;
+            margin: 0 -25px;
+            padding: 12px 25px;
+        }
+        
+        .today .day-name {
+            color: #4caf50;
+            font-weight: 600;
+        }
+        
+        .closed {
+            color: #f44336;
+        }
+        
+        .special-hours {
+            background: #fff5e5;
+            border-left: 5px solid #f39c12;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+        
+        .special-hours h3 {
+            color: #f39c12;
+            margin-bottom: 15px;
+        }
+        
+        .holiday-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .holiday-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ffe0b2;
+        }
+        
+        .holiday-item:last-child {
+            border-bottom: none;
+        }
+        
+        .holiday-date {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .holiday-status {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .services-24h {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+        
+        .services-24h-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .service-24h-item {
+            text-align: center;
+        }
+        
+        .service-24h-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+        
+        .service-24h-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .service-24h-info {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .contact-hours {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .contact-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .contact-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .contact-hours {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .calendar-section {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+        
+        .calendar-container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .calendar-month {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .calendar-nav button {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .calendar-nav button:hover {
+            background: #f0f0f0;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+        
+        .calendar-day-header {
+            text-align: center;
+            font-weight: 600;
+            color: #666;
+            font-size: 14px;
+            padding: 10px 0;
+        }
+        
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .calendar-day:hover {
+            background: #f0f0f0;
+        }
+        
+        .calendar-day.today {
+            background: #e8f5e9;
+            border-color: #4caf50;
+            font-weight: 600;
+        }
+        
+        .calendar-day.holiday {
+            background: #ffebee;
+            color: #f44336;
+        }
+        
+        @media (max-width: 768px) {
+            .horaires-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .calendar-grid {
+                gap: 5px;
+            }
+            
+            .calendar-day {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+    
+    <!-- Contenu Principal -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="horaires-hero">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 20px;">Horaires d'Ouverture</h1>
+                <p style="font-size: 1.25rem; opacity: 0.95;">Nous sommes là quand vous avez besoin de nous</p>
+            </div>
+        </section>
+        
+        <!-- Statut Actuel -->
+        <div class="current-status">
+            <div id="currentStatus" class="status-indicator status-open">
+                <span class="status-dot" style="background: #4caf50;"></span>
+                <span>ACTUELLEMENT OUVERT</span>
+            </div>
+            <p style="margin-top: 15px; color: #666;" id="currentTime">
+                Il est actuellement <strong>14:30</strong> - Lundi 16 Décembre
+            </p>
+        </div>
+        
+        <!-- Horaires par Service -->
+        <section class="container">
+            <h2 style="text-align: center; color: #333; margin-bottom: 50px;">Horaires par Service</h2>
+            
+            <div class="horaires-grid">
+                <!-- Consultations -->
+                <div class="horaires-card">
+                    <div class="horaires-header">
+                        <div class="service-icon">👨‍⚕️</div>
+                        <div class="service-name">Consultations Externes</div>
+                        <div class="service-status">Sur rendez-vous</div>
+                    </div>
+                    <div class="horaires-body">
+                        <div class="day-schedule today">
+                            <span class="day-name">Lundi</span>
+                            <span class="day-hours">08:00 - 20:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Mardi</span>
+                            <span class="day-hours">08:00 - 20:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Mercredi</span>
+                            <span class="day-hours">08:00 - 20:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Jeudi</span>
+                            <span class="day-hours">08:00 - 20:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Vendredi</span>
+                            <span class="day-hours">08:00 - 20:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Samedi</span>
+                            <span class="day-hours">08:00 - 14:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Dimanche</span>
+                            <span class="day-hours closed">Fermé</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Laboratoire -->
+                <div class="horaires-card">
+                    <div class="horaires-header" style="background: linear-gradient(135deg, #4caf50, #45a049);">
+                        <div class="service-icon">🔬</div>
+                        <div class="service-name">Laboratoire d'Analyses</div>
+                        <div class="service-status">Sans rendez-vous</div>
+                    </div>
+                    <div class="horaires-body">
+                        <div class="day-schedule today">
+                            <span class="day-name">Lundi</span>
+                            <span class="day-hours">07:00 - 20:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Mardi</span>
+                            <span class="day-hours">07:00 - 20:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Mercredi</span>
+                            <span class="day-hours">07:00 - 20:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Jeudi</span>
+                            <span class="day-hours">07:00 - 20:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Vendredi</span>
+                            <span class="day-hours">07:00 - 20:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Samedi</span>
+                            <span class="day-hours">07:00 - 16:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Dimanche</span>
+                            <span class="day-hours">08:00 - 12:00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Imagerie -->
+                <div class="horaires-card">
+                    <div class="horaires-header" style="background: linear-gradient(135deg, #2196f3, #1976d2);">
+                        <div class="service-icon">📷</div>
+                        <div class="service-name">Imagerie Médicale</div>
+                        <div class="service-status">Sur rendez-vous</div>
+                    </div>
+                    <div class="horaires-body">
+                        <div class="day-schedule today">
+                            <span class="day-name">Lundi</span>
+                            <span class="day-hours">08:00 - 18:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Mardi</span>
+                            <span class="day-hours">08:00 - 18:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Mercredi</span>
+                            <span class="day-hours">08:00 - 18:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Jeudi</span>
+                            <span class="day-hours">08:00 - 18:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Vendredi</span>
+                            <span class="day-hours">08:00 - 18:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Samedi</span>
+                            <span class="day-hours">08:00 - 13:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Dimanche</span>
+                            <span class="day-hours closed">Fermé</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Administration -->
+                <div class="horaires-card">
+                    <div class="horaires-header" style="background: linear-gradient(135deg, #ff9800, #f57c00);">
+                        <div class="service-icon">🏢</div>
+                        <div class="service-name">Administration</div>
+                        <div class="service-status">Accueil & Admission</div>
+                    </div>
+                    <div class="horaires-body">
+                        <div class="day-schedule today">
+                            <span class="day-name">Lundi</span>
+                            <span class="day-hours">08:00 - 17:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Mardi</span>
+                            <span class="day-hours">08:00 - 17:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Mercredi</span>
+                            <span class="day-hours">08:00 - 17:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Jeudi</span>
+                            <span class="day-hours">08:00 - 17:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Vendredi</span>
+                            <span class="day-hours">08:00 - 17:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Samedi</span>
+                            <span class="day-hours">09:00 - 13:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Dimanche</span>
+                            <span class="day-hours closed">Fermé</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pharmacie -->
+                <div class="horaires-card">
+                    <div class="horaires-header" style="background: linear-gradient(135deg, #9c27b0, #7b1fa2);">
+                        <div class="service-icon">💊</div>
+                        <div class="service-name">Pharmacie</div>
+                        <div class="service-status">Service continu</div>
+                    </div>
+                    <div class="horaires-body">
+                        <div class="day-schedule today">
+                            <span class="day-name">Lundi</span>
+                            <span class="day-hours">08:00 - 21:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Mardi</span>
+                            <span class="day-hours">08:00 - 21:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Mercredi</span>
+                            <span class="day-hours">08:00 - 21:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Jeudi</span>
+                            <span class="day-hours">08:00 - 21:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Vendredi</span>
+                            <span class="day-hours">08:00 - 21:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Samedi</span>
+                            <span class="day-hours">08:00 - 21:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Dimanche</span>
+                            <span class="day-hours">09:00 - 20:00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cafétéria -->
+                <div class="horaires-card">
+                    <div class="horaires-header" style="background: linear-gradient(135deg, #795548, #5d4037);">
+                        <div class="service-icon">☕</div>
+                        <div class="service-name">Cafétéria</div>
+                        <div class="service-status">Visiteurs & Patients</div>
+                    </div>
+                    <div class="horaires-body">
+                        <div class="day-schedule today">
+                            <span class="day-name">Lundi</span>
+                            <span class="day-hours">07:00 - 20:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Mardi</span>
+                            <span class="day-hours">07:00 - 20:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Mercredi</span>
+                            <span class="day-hours">07:00 - 20:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Jeudi</span>
+                            <span class="day-hours">07:00 - 20:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Vendredi</span>
+                            <span class="day-hours">07:00 - 20:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Samedi</span>
+                            <span class="day-hours">07:00 - 20:00</span>
+                        </div>
+                        <div class="day-schedule">
+                            <span class="day-name">Dimanche</span>
+                            <span class="day-hours">08:00 - 19:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services 24h/24 -->
+        <section class="container">
+            <div class="services-24h">
+                <h2 style="text-align: center; color: #333; margin-bottom: 10px;">🏥 Services Disponibles 24h/24</h2>
+                <p style="text-align: center; color: #666;">Ces services fonctionnent sans interruption</p>
+                
+                <div class="services-24h-grid">
+                    <div class="service-24h-item">
+                        <div class="service-24h-icon">🚨</div>
+                        <div class="service-24h-name">Urgences</div>
+                        <div class="service-24h-info">24h/24, 7j/7</div>
+                    </div>
+                    
+                    <div class="service-24h-item">
+                        <div class="service-24h-icon">🏥</div>
+                        <div class="service-24h-name">Hospitalisation</div>
+                        <div class="service-24h-info">Surveillance continue</div>
+                    </div>
+                    
+                    <div class="service-24h-item">
+                        <div class="service-24h-icon">🤰</div>
+                        <div class="service-24h-name">Maternité</div>
+                        <div class="service-24h-info">Accouchements</div>
+                    </div>
+                    
+                    <div class="service-24h-item">
+                        <div class="service-24h-icon">🔬</div>
+                        <div class="service-24h-name">Labo Urgences</div>
+                        <div class="service-24h-info">Analyses urgentes</div>
+                    </div>
+                    
+                    <div class="service-24h-item">
+                        <div class="service-24h-icon">⚕️</div>
+                        <div class="service-24h-name">Bloc Opératoire</div>
+                        <div class="service-24h-info">Urgences chirurgicales</div>
+                    </div>
+                    
+                    <div class="service-24h-item">
+                        <div class="service-24h-icon">🚑</div>
+                        <div class="service-24h-name">Ambulance</div>
+                        <div class="service-24h-info">Transport médicalisé</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Horaires Spéciaux -->
+        <section class="container">
+            <div class="special-hours">
+                <h3>📅 Jours Fériés et Horaires Spéciaux</h3>
+                <p style="color: #666; margin-bottom: 20px;">La clinique reste ouverte avec des horaires adaptés</p>
+                
+                <ul class="holiday-list">
+                    <li class="holiday-item">
+                        <span class="holiday-date">1er Janvier - Nouvel An</span>
+                        <span class="holiday-status">Urgences uniquement</span>
+                    </li>
+                    <li class="holiday-item">
+                        <span class="holiday-date">11 Janvier - Manifeste de l'Indépendance</span>
+                        <span class="holiday-status">Horaires réduits</span>
+                    </li>
+                    <li class="holiday-item">
+                        <span class="holiday-date">Aïd el-Fitr</span>
+                        <span class="holiday-status">Urgences uniquement</span>
+                    </li>
+                    <li class="holiday-item">
+                        <span class="holiday-date">Aïd el-Adha</span>
+                        <span class="holiday-status">Urgences uniquement</span>
+                    </li>
+                    <li class="holiday-item">
+                        <span class="holiday-date">30 Juillet - Fête du Trône</span>
+                        <span class="holiday-status">Horaires réduits</span>
+                    </li>
+                    <li class="holiday-item">
+                        <span class="holiday-date">20 Août - Révolution du Roi et du Peuple</span>
+                        <span class="holiday-status">Horaires réduits</span>
+                    </li>
+                    <li class="holiday-item">
+                        <span class="holiday-date">6 Novembre - Marche Verte</span>
+                        <span class="holiday-status">Horaires réduits</span>
+                    </li>
+                    <li class="holiday-item">
+                        <span class="holiday-date">18 Novembre - Fête de l'Indépendance</span>
+                        <span class="holiday-status">Horaires réduits</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Contact par Service -->
+        <section class="container">
+            <div class="contact-hours">
+                <h2 style="text-align: center; color: #333; margin-bottom: 10px;">Horaires de Contact</h2>
+                <p style="text-align: center; color: #666;">Quand nous joindre selon vos besoins</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-title">Standard</div>
+                        <div class="contact-hours">
+                            Lun-Ven : 8h-20h<br>
+                            Sam : 8h-14h<br>
+                            Dim : Fermé
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📅</div>
+                        <div class="contact-title">Prise de RDV</div>
+                        <div class="contact-hours">
+                            Lun-Ven : 8h-18h<br>
+                            Sam : 9h-13h<br>
+                            En ligne : 24h/24
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">💬</div>
+                        <div class="contact-title">Chat Support</div>
+                        <div class="contact-hours">
+                            7j/7 : 8h-22h<br>
+                            Réponse immédiate<br>
+                            Service en ligne
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-title">Email</div>
+                        <div class="contact-hours">
+                            24h/24<br>
+                            Réponse sous 24h<br>
+                            Jours ouvrables
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Calendrier -->
+        <section class="calendar-section">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 50px;">Calendrier du Mois</h2>
+                
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <div class="calendar-month">Décembre 2024</div>
+                        <div class="calendar-nav">
+                            <button onclick="changeMonth(-1)">←</button>
+                            <button onclick="changeMonth(1)">→</button>
+                        </div>
+                    </div>
+                    
+                    <div class="calendar-grid">
+                        <!-- En-têtes des jours -->
+                        <div class="calendar-day-header">Lun</div>
+                        <div class="calendar-day-header">Mar</div>
+                        <div class="calendar-day-header">Mer</div>
+                        <div class="calendar-day-header">Jeu</div>
+                        <div class="calendar-day-header">Ven</div>
+                        <div class="calendar-day-header">Sam</div>
+                        <div class="calendar-day-header">Dim</div>
+                        
+                        <!-- Jours du mois -->
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day holiday">1</div>
+                        
+                        <!-- Semaine 2 -->
+                        <div class="calendar-day">2</div>
+                        <div class="calendar-day">3</div>
+                        <div class="calendar-day">4</div>
+                        <div class="calendar-day">5</div>
+                        <div class="calendar-day">6</div>
+                        <div class="calendar-day">7</div>
+                        <div class="calendar-day holiday">8</div>
+                        
+                        <!-- Semaine 3 -->
+                        <div class="calendar-day">9</div>
+                        <div class="calendar-day">10</div>
+                        <div class="calendar-day">11</div>
+                        <div class="calendar-day">12</div>
+                        <div class="calendar-day">13</div>
+                        <div class="calendar-day">14</div>
+                        <div class="calendar-day holiday">15</div>
+                        
+                        <!-- Semaine 4 -->
+                        <div class="calendar-day today">16</div>
+                        <div class="calendar-day">17</div>
+                        <div class="calendar-day">18</div>
+                        <div class="calendar-day">19</div>
+                        <div class="calendar-day">20</div>
+                        <div class="calendar-day">21</div>
+                        <div class="calendar-day holiday">22</div>
+                        
+                        <!-- Semaine 5 -->
+                        <div class="calendar-day">23</div>
+                        <div class="calendar-day">24</div>
+                        <div class="calendar-day holiday">25</div>
+                        <div class="calendar-day">26</div>
+                        <div class="calendar-day">27</div>
+                        <div class="calendar-day">28</div>
+                        <div class="calendar-day holiday">29</div>
+                        
+                        <!-- Semaine 6 -->
+                        <div class="calendar-day">30</div>
+                        <div class="calendar-day">31</div>
+                    </div>
+                    
+                    <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+                        <p style="color: #666; margin: 0;">
+                            <span style="display: inline-block; width: 15px; height: 15px; background: #e8f5e9; border: 1px solid #4caf50; margin-right: 5px;"></span> Aujourd'hui
+                            <span style="margin-left: 20px;">
+                                <span style="display: inline-block; width: 15px; height: 15px; background: #ffebee; margin-right: 5px;"></span> Dimanche / Férié
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section style="background: linear-gradient(135deg, #f093fb, #f5576c); padding: 60px 0;">
+            <div class="container" style="text-align: center;">
+                <h2 style="color: white; margin-bottom: 20px;">Planifiez Votre Visite</h2>
+                <p style="color: white; font-size: 1.1rem; margin-bottom: 30px;">
+                    Vérifiez nos horaires avant de vous déplacer
+                </p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="tel:0539123456" class="btn btn-primary" style="background: white; color: #f093fb; padding: 15px 40px; font-size: 18px;">
+                        📞 Confirmer les Horaires
+                    </a>
+                    <a href="../medecins/rendez-vous.html" class="btn btn-secondary" style="background: transparent; color: white; border: 2px solid white;">
+                        📅 Prendre Rendez-vous
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <div id="footer-container"></div>
+    
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
+    <script>
+        // Charger le header et le footer
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                if (typeof initHeader === 'function') {
+                    setTimeout(initHeader, 100);
+                }
+            });
+            
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+                if (typeof initFooter === 'function') {
+                    setTimeout(initFooter, 100);
+                }
+            });
+        
+        // Mise à jour de l'heure actuelle
+        function updateCurrentTime() {
+            const now = new Date();
+            const days = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+            const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+            
+            const dayName = days[now.getDay()];
+            const day = now.getDate();
+            const month = months[now.getMonth()];
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            
+            document.getElementById('currentTime').innerHTML = 
+                `Il est actuellement <strong>${hours}:${minutes}</strong> - ${dayName} ${day} ${month}`;
+            
+            // Vérifier si ouvert ou fermé
+            checkOpenStatus(now);
+        }
+        
+        function checkOpenStatus(now) {
+            const day = now.getDay();
+            const hour = now.getHours();
+            const statusElement = document.getElementById('currentStatus');
+            
+            let isOpen = false;
+            
+            // Logique simplifiée pour déterminer si ouvert
+            if (day >= 1 && day <= 5) { // Lundi à Vendredi
+                isOpen = hour >= 8 && hour < 20;
+            } else if (day === 6) { // Samedi
+                isOpen = hour >= 8 && hour < 14;
+            }
+            
+            if (isOpen) {
+                statusElement.className = 'status-indicator status-open';
+                statusElement.innerHTML = '<span class="status-dot" style="background: #4caf50;"></span><span>ACTUELLEMENT OUVERT</span>';
+            } else {
+                statusElement.className = 'status-indicator status-closed';
+                statusElement.innerHTML = '<span class="status-dot" style="background: #f44336;"></span><span>ACTUELLEMENT FERMÉ</span>';
+            }
+        }
+        
+        // Mettre à jour toutes les minutes
+        updateCurrentTime();
+        setInterval(updateCurrentTime, 60000);
+        
+        // Fonction pour changer de mois dans le calendrier
+        function changeMonth(direction) {
+            console.log('Changer de mois:', direction > 0 ? 'suivant' : 'précédent');
+            // Ici vous pouvez implémenter la logique de changement de mois
+        }
+        
+        // Marquer le jour actuel
+        const today = new Date().getDate();
+        const todaySchedules = document.querySelectorAll('.day-schedule');
+        const currentDay = new Date().getDay();
+        const dayMapping = [6, 0, 1, 2, 3, 4, 5]; // Mapping pour correspondre à l'ordre dans le HTML
+        
+        if (currentDay >= 0 && currentDay <= 6) {
+            todaySchedules.forEach((schedule, index) => {
+                if (index % 7 === dayMapping[currentDay]) {
+                    schedule.classList.add('today');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
